@@ -20,11 +20,23 @@ class App extends Component {
     })
   }
 
+  deletePost = (id) => {
+    axios.delete('/posts/' + id).then((response) => {
+      this.getPosts()
+    })
+  }
+
+  handleSubmit = (info) => {
+    axios.post('/posts', info).then((response) => {
+      this.getPosts()
+    })
+  }
+
   render = () => {
     return (
       <div>
         <h1>Working</h1>
-        <Post post={this.state.posts}/>
+        <Post posts={this.state.posts} deletePost={this.deletePost} handleSubmit={this.handleSubmit}/>
       </div>
     );
   }
