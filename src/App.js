@@ -32,11 +32,17 @@ class App extends Component {
     })
   }
 
+  handleEdit = (info, postId) => {
+    axios.put('/posts/' + postId, info).then((response) => {
+      this.getPosts()
+    })
+  }
+
   render = () => {
     return (
       <div>
         <h1>Working</h1>
-        <Post posts={this.state.posts} deletePost={this.deletePost} handleSubmit={this.handleSubmit}/>
+        <Post posts={this.state.posts} deletePost={this.deletePost} handleSubmit={this.handleSubmit} handleEdit={this.handleEdit}/>
       </div>
     );
   }
