@@ -26,15 +26,16 @@ class NewPost extends Component {
 
   render = () => {
     return (
-      <div>
+      <div id="new-post">
+        <h5 id="create-a-post">Create a post</h5>
+        <br/>
         <form onSubmit={this.handleSubmit}>
-          <p>Title</p>
-          <input type="text" id="title" onChange={this.handleChange} />
-          <p>Author</p>
-          <input type="text" id="author" onChange={this.handleChange} />
-          <p>Body</p>
-          <textarea id="body" placeholder="Enter your post..." onChange={this.handleChange}></textarea>
-          <input type="submit" value="Create Post" />
+          <input type="text" id="title" placeholder="Title" onChange={this.handleChange} />
+          <input type="text" id="author" placeholder="Author" onChange={this.handleChange} />
+          <br/>
+          <textarea id="body" placeholder="Text" onChange={this.handleChange}></textarea>
+          <br/>
+          <input type="submit" id="create-post-button" value="Post" />
         </form>
       </div>
     )

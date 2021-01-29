@@ -1,0 +1,79 @@
+body {
+    background-color: gainsboro;
+    margin: 0;
+}
+
+#nav {
+    display: flex;
+    background-color: white;
+    margin-left: 0;
+    margin-top: -1.5em;
+    padding: .5em .5em 0 .5em;
+    font-family: 'Varela Round';
+    font-size: .6em;
+}
+
+#reddit-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 25px;
+    transform: translateY(13px);
+}
+
+h1 {
+    padding-left: .8em;
+    transform: translateY(5px);
+}
+
+#new-post {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 400px;
+    padding: 1em;
+    margin-left: 1em;
+    border: 1px solid white;
+    border-radius:4px;
+}
+
+h5 {
+    font-family: 'Varela Round';
+    padding: 0;
+    margin: 0 0 -1em 0;
+    /* font-size: .6em; */
+}
+
+input[type=text] {
+    width: 173px;
+    margin: .5em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: .7em;
+    border: 1px solid #eee;
+}
+
+textarea {
+    width: 361px;
+    font-family: Arial, Helvetica, sans-serif;
+
+    border: 1px solid #eee;
+    resize: vertical;
+    min-height: 50px;
+}
+
+#create-post-button {
+    font-family: 'Varela Round';
+    font-size: .7em;
+    padding: .5em 1.5em;
+    background-color: #0379d3;
+    color: whitesmoke;
+    border: 0;
+    border-radius: 4px;
+}
+
+#create-post-button:hover{
+    cursor: pointer;
+    background-color: #1282d8;
+    color: whitesmoke;
+}
