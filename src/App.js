@@ -125,11 +125,22 @@ class App extends Component {
     return (
       <div>
         <div id="nav">
-          <img src="https://ps.w.org/wp-avatar/assets/icon-256x256.png?rev=1787902" id="reddit-icon"/>
-          <h1>reddit 2.0</h1>
-          <h3 onClick={this.showLogin} id="loginNavButton">Login</h3>
-          <h3 onClick={this.showCreate} id="createNavButton">Create Account</h3>
-          <h3 onClick={this.logout} id="logoutNavButton" style={{display:"none"}}>Log Out</h3>
+
+          <div id="logo">
+            <img src="https://ps.w.org/wp-avatar/assets/icon-256x256.png?rev=1787902" id="reddit-icon"/>
+            <h1>reddit 2.0</h1>
+          </div>
+
+          <div id="nav-commands">
+            <div id="not-logged-in">
+              <h3 onClick={this.showLogin} id="loginNavButton">Login</h3>
+              <h3 onClick={this.showCreate} id="createNavButton">Create Account</h3>
+            </div>
+            <h3 onClick={this.logout} id="logoutNavButton" 
+            style={{display:"none"}}>
+              Log Out</h3>
+            </div>
+
         </div>
         <div id="loginDiv" style={{display:"none"}}>
           <Login submitLogin={this.submitLogin} currentUser={this.state.currentUser} toggleAuthDivs={this.toggleAuthDivs} />
