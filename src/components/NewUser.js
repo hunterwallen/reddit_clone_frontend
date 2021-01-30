@@ -59,19 +59,24 @@ class NewUser extends Component {
 
   render = () => {
     return (
-      <div>
-        <h2>Create User Account</h2>
+      <div id="new-user">
+        <h5 id="create-a-post">Create a new user account</h5>
+        <br/>
         <form onSubmit={this.createUser}>
-          <p>Email</p>
-          <input type="text" id="email" onChange={this.handleChange} />
-          <p>Username</p>
-          <input type="text" id="username" onChange={this.handleChange} />
-          <p>Password</p>
-          <input type="password" id="password" onChange={this.handleChange} />
-          <p>Verify Password</p>
-          <input type="password" id="verified_password" onChange={this.handleChange} />
+          
+          <input type="text" id="email" onChange={this.handleChange} placeholder="Email" />
+         
+          <input type="text" id="username" onChange={this.handleChange} placeholder="Username" />
+          
+          <input type="password" id="password" onChange={this.handleChange} placeholder="Password" />
+          
+          <input type="password" id="verified_password" onChange={this.handleChange} placeholder="Verify Password" />
           <p id="matchingWarning" style={{display:"none"}}> Your passwords do not match</p>
-          <input type="submit" value="Create Account" style={{display:"none"}} id="createButton"/>
+
+          
+          <input type="submit" id="create-user-button" value="Create Account" 
+          style={{display:"none"}} 
+          />
         </form>
       </div>
     )

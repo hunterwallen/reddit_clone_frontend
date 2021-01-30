@@ -20,6 +20,7 @@ class NewPost extends Component {
       title: "",
       body: ""
     })
+    event.target.reset()
   }
 
   render = () => {
