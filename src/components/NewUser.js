@@ -74,7 +74,7 @@ class NewUser extends Component {
           <p id="matchingWarning" style={{display:"none"}}> Your passwords do not match</p>
 
           
-          <input type="submit" id="create-user-button" value="Create Account" 
+          <input type="submit" id="createButton" value="Create Account" 
           style={{display:"none"}} 
           />
         </form>

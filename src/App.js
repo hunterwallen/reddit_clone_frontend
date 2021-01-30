@@ -153,11 +153,22 @@ class App extends Component {
     return (
       <div>
         <div id="nav">
-          <img src="https://ps.w.org/wp-avatar/assets/icon-256x256.png?rev=1787902" id="reddit-icon"/>
-          <h1>reddit 2.0</h1>
-          <h3 onClick={this.showLogin} id="loginNavButton">Login</h3>
-          <h3 onClick={this.showCreate} id="createNavButton">Create Account</h3>
-          <h3 onClick={this.logout} id="logoutNavButton" style={{display:"none"}}>Log Out</h3>
+
+          <div id="logo">
+            <img src="https://ps.w.org/wp-avatar/assets/icon-256x256.png?rev=1787902" id="reddit-icon"/>
+            <h1>reddit 2.0</h1>
+          </div>
+
+          <div id="nav-commands">
+            <div id="not-logged-in">
+              <h3 onClick={this.showLogin} id="loginNavButton">Login</h3>
+              <h3 onClick={this.showCreate} id="createNavButton">Create Account</h3>
+            </div>
+            <h3 onClick={this.logout} id="logoutNavButton" 
+            style={{display:"none"}}>
+              Log Out</h3>
+            </div>
+
         </div>
         <div id="loginDiv" style={{display:"none"}}>
           <Login submitLogin={this.submitLogin} currentUser={this.state.currentUser} toggleAuthDivs={this.toggleAuthDivs} />
@@ -165,13 +176,18 @@ class App extends Component {
         <div id="newUserDiv" style={{display:"none"}}>
           <NewUser createUser={this.createUser} toggleAuthDivs={this.toggleAuthDivs} />
         </div>
-        <div id="newSubDiv" style={{display:"none"}}>
+         <div id="newSubDiv" style={{display:"none"}}>
           <CreateSub createSub={this.createSub} />
         </div>
-        <main>
-                  <Post posts={this.state.posts} deletePost={this.deletePost} handleSubmit={this.handleSubmit} handleEdit={this.handleEdit} currentUser={this.state.currentUser}/>
-        </main>
-      </div>
+        <div id="flex-container"></div>
+          <main>
+                    <Post posts={this.state.posts} deletePost={this.deletePost} handleSubmit={this.handleSubmit} handleEdit={this.handleEdit} currentUser={this.state.currentUser}/>
+          </main>
+
+          <div id="sidebar">
+          </div>
+
+        </div>
     );
   }
 }
