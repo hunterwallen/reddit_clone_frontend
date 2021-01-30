@@ -47,7 +47,7 @@ class Login extends Component {
           <input type="text" id="email" onChange={this.handleChange} placeholder="Email"/>
           <input type="password" id="password" onChange={this.handleChange} placeholder="Password"/>
           <p id="login_failed" style={{display: "none"}}>Your username or password is invalid. Please try again"</p>
-          <input type="submit" value="Login" id="login-button" style={{display:"none"}} id="loginButton"/>
+          <input type="submit" value="Login" style={{display:"none"}} id="loginButton"/>
         </form>
         <div id="switch_to_create_user">
           <button class='toggle_sign_in_create' id="need-to-create-acct" onClick={this.props.toggleAuthDivs}>Need to create an account?</button>
