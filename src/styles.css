@@ -33,17 +33,39 @@ h1 {
     text-align: center;
     width: 400px;
     padding: 1em;
+    margin-top: 1em;
     margin-left: 1em;
     border: 1px solid white;
     border-radius:4px;
 }
 
+h4 {
+    font-family: 'Varela Round';
+    padding: 0;
+    margin-top: 0;
+}
+
 h5 {
+    font-family: Arial;
+    font-weight: lighter;
+    margin-top: 0;
+    padding: 0;
+}
+
+h6 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: .6em;
+    font-weight: lighter;
+    color: rgb(189, 189, 189);
+    margin-top: -1em;
+}
+
+#create-a-post {
     font-family: 'Varela Round';
     padding: 0;
     margin: 0 0 -1em 0;
-    /* font-size: .6em; */
 }
+
 
 input[type=text] {
     width: 173px;
@@ -76,4 +98,17 @@ textarea {
     cursor: pointer;
     background-color: #1282d8;
     color: whitesmoke;
+}
+
+#post-id {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 400px;
+    padding: 1em;
+    margin-top: 1em;
+    margin-left: 1em;
+    border: 1px solid white;
+    border-radius:4px;
 }
