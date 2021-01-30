@@ -24,26 +24,26 @@ class App extends Component {
   }
 
   deletePost = (id) => {
-    axios.delete('/posts/' + id).then((response) => {
+    axios.delete('https://reddit-two-point-oh.herokuapp.com/posts/' + id).then((response) => {
       this.getPosts()
     })
   }
 
   handleSubmit = (info) => {
-    axios.post('/posts', info).then((response) => {
+    axios.post('https://reddit-two-point-oh.herokuapp.com/posts', info).then((response) => {
       this.getPosts()
     })
   }
 
   handleEdit = (info, postId) => {
-    axios.put('/posts/' + postId, info).then((response) => {
+    axios.put('https://reddit-two-point-oh.herokuapp.com/posts/' + postId, info).then((response) => {
       this.getPosts()
     })
   }
 
 
   createUser = (info) => {
-    axios.post('/accounts', info).then((response) => {
+    axios.post('https://reddit-two-point-oh.herokuapp.com/accounts', info).then((response) => {
       this.setState({
         posts: this.state.posts,
         currentUser: response.data
@@ -53,7 +53,7 @@ class App extends Component {
 
   submitLogin = (creds) => {
     console.log(creds);
-    axios.post('/accounts/login', creds).then((response) => {
+    axios.post('https://reddit-two-point-oh.herokuapp.com/accounts/login', creds).then((response) => {
       console.log(response);
       if(response.data.username) {
         this.setState({
