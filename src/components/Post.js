@@ -20,14 +20,20 @@ class Post extends Component {
   render = () => {
     return (
       <div>
-        <NewPost handleSubmit={this.handleSubmit} />
+        <div id='newPostLoggedIn' style={{display:"none"}}>
+          <NewPost currentUser ={this.props.currentUser} handleSubmit={this.handleSubmit} />
+        </div>
         {this.props.posts.map((post) => {
           return (<div id="post-id">
             <h6>Posted by /{post.author}</h6>
             <h4>{post.title}</h4>
             <h5>{post.body}</h5>
-            <button id={post.id} onClick={this.deletePost}>Delete Post</button>
-            <EditPost handleEdit={this.handleEdit} postId={post.id} author={post.author} title={post.title} body={post.body}/>
+            {Number(post.user_id) === this.props.currentUser.user_id ?
+              <div id="myPostsOptions">
+                <button id={post.id} onClick={this.deletePost}>Delete Post</button>
+                <EditPost handleEdit={this.handleEdit} postId={post.id} author={post.author} title={post.title} body={post.body}/>
+              </div>
+            : null }
           </div>
         )
       }).reverse()}

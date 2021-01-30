@@ -30,6 +30,9 @@ class App extends Component {
   }
 
   handleSubmit = (info) => {
+    info.author = this.state.currentUser.username
+    info.user_id = Number(this.state.currentUser.user_id)
+    console.log(info);
     axios.post('https://reddit-two-point-oh.herokuapp.com/posts', info).then((response) => {
       this.getPosts()
     })
@@ -65,6 +68,7 @@ class App extends Component {
         document.querySelector('#logoutNavButton').style.display = "flex"
         document.querySelector('#loginDiv').style.display = "none"
         setTimeout(()=> {document.querySelector('#login_failed').style.display = "none"}, 1002)
+        document.querySelector('#newPostLoggedIn').style.display = 'flex'
       } else {
         this.setState({
           posts: this.state.posts,
@@ -78,6 +82,7 @@ class App extends Component {
     document.querySelector('#loginNavButton').style.display = "flex"
     document.querySelector('#createNavButton').style.display = "flex"
     document.querySelector('#logoutNavButton').style.display = "none"
+    document.querySelector('#newPostLoggedIn').style.display = 'none'
     this.setState({
       posts: this.state.posts,
       currentUser: {}
@@ -133,7 +138,7 @@ class App extends Component {
           <NewUser createUser={this.createUser} toggleAuthDivs={this.toggleAuthDivs} />
         </div>
         <main>
-        <Post posts={this.state.posts} deletePost={this.deletePost} handleSubmit={this.handleSubmit} handleEdit={this.handleEdit}/>
+                  <Post posts={this.state.posts} deletePost={this.deletePost} handleSubmit={this.handleSubmit} handleEdit={this.handleEdit} currentUser={this.state.currentUser}/>
         </main>
       </div>
     );
