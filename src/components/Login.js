@@ -40,19 +40,17 @@ class Login extends Component {
 
   render = () => {
     return (
-      <div>
-        <h2>Login</h2>
+      <div id="user-login">
+        <h5 id="create-a-post">Login</h5>
+        <br/>
         <form onSubmit={this.submitLogin}>
-          <p>Email</p>
-          <input type="text" id="email" onChange={this.handleChange} />
-          <p>Password</p>
-          <input type="password" id="password" onChange={this.handleChange} />
+          <input type="text" id="email" onChange={this.handleChange} placeholder="Email"/>
+          <input type="password" id="password" onChange={this.handleChange} placeholder="Password"/>
           <p id="login_failed" style={{display: "none"}}>Your username or password is invalid. Please try again"</p>
           <input type="submit" value="Login" style={{display:"none"}} id="loginButton"/>
         </form>
         <div id="switch_to_create_user">
-          <p>Need to create an account?</p>
-          <button class='toggle_sign_in_create' onClick={this.props.toggleAuthDivs}>Create Account</button>
+          <button class='toggle_sign_in_create' id="need-to-create-acct" onClick={this.props.toggleAuthDivs}>Need to create an account?</button>
         </div>
       </div>
     )

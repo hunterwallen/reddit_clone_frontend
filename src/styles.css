@@ -3,8 +3,18 @@ body {
     margin: 0;
 }
 
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Navigation bar */
+
 #nav {
     display: flex;
+    flex-direction: row;
+    justify-content: left;
     background-color: white;
     margin-left: 0;
     margin-top: -1.5em;
@@ -24,6 +34,79 @@ h1 {
     padding-left: .8em;
     transform: translateY(5px);
 }
+
+#logo {
+    display: flex;
+    flex-direction: row;
+    width: 15em;
+}
+
+#nav-commands {
+    width: calc(100% - 15em);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#not-logged-in{
+    display: flex;
+}
+
+#loginNavButton {
+    margin-left: 2em;
+    color: gray;
+}
+
+#loginNavButton, #createNavButton, #logoutNavButton {
+    padding: 1em 1em 0 1em;
+    color: gray;
+}
+
+#logoutNavButton {
+    
+}
+
+/* Login */
+#need-to-create-acct, #loginButton {
+    font-family: 'Varela Round';
+    font-size: .7em;
+    margin-top: .5em;
+    padding: .5em 1.5em;
+    background-color: whitesmoke;
+    color: black;
+    border: 0;
+    border-radius: 4px;
+}
+
+/* Create a user */
+
+#user-login, #new-user{
+    background-color:#f68d49;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 400px;
+    padding: 1em;
+    margin-top: 1em;
+    margin-left: 1em;
+    border: 1px solid #f68d49;;
+    border-radius:4px;
+    filter: drop-shadow(-3px 4px 4px gray);
+}
+
+#createButton {
+    font-family: 'Varela Round';
+    font-size: .7em;
+    margin-top: .5em;
+    padding: .5em 1.5em;
+    background-color: whitesmoke;
+    color: black;
+    border: 0;
+    border-radius: 4px;
+}
+
+/* Create a post */
 
 #new-post {
     background-color: white;
@@ -67,7 +150,7 @@ h6 {
 }
 
 
-input[type=text] {
+input[type=text], input[type=password] {
     width: 173px;
     margin: .5em;
     font-family: Arial, Helvetica, sans-serif;
@@ -111,4 +194,10 @@ textarea {
     margin-left: 1em;
     border: 1px solid white;
     border-radius:4px;
+}
+
+/* Main body */
+
+#flex-container {
+    display: flex;
 }
