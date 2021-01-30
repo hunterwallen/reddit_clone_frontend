@@ -69,6 +69,7 @@ h1 {
     margin-left: 1em;
     border: 1px solid #f68d49;;
     border-radius:4px;
+    filter: drop-shadow(-3px 4px 4px gray);
 }
 
 #createButton {
