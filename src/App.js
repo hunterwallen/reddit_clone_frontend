@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Post from './components/Post'
+import NewUser from './components/NewUser'
 import axios from 'axios'
 
 
@@ -7,7 +8,8 @@ import axios from 'axios'
 
 class App extends Component {
   state = {
-    posts: []
+    posts: [],
+    currentUser: {}
   }
 
   componentDidMount = () => {
@@ -16,7 +18,10 @@ class App extends Component {
 
   getPosts = () => {
     axios.get('https://reddit-two-point-oh.herokuapp.com/posts').then((response) => {
-        this.setState({posts: response.data})
+        this.setState({
+          posts: response.data,
+          currentUser: this.state.currentUser
+        })
     })
   }
 
@@ -38,10 +43,22 @@ class App extends Component {
     })
   }
 
+
+  createUser = (info) => {
+    axios.post('https://reddit-two-point-oh.herokuapp.com/accounts', info).then((response) => {
+      this.setState({
+        posts: this.state.posts,
+        currentUser: response.data
+      })
+    })
+  }
+
+
   render = () => {
     return (
       <div>
         <h1>Working</h1>
+        <NewUser createUser={this.createUser} />
         <Post posts={this.state.posts} deletePost={this.deletePost} handleSubmit={this.handleSubmit} handleEdit={this.handleEdit}/>
       </div>
     );
