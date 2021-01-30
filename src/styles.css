@@ -33,8 +33,18 @@ h1 {
     transform: translateY(5px);
 }
 
+#loginNavButton {
+    margin-left: 2em;
+    color: gray;
+}
+
+#loginNavButton, #createNavButton {
+    padding: 1em;
+    color: gray;
+}
+
 /* Login */
-#need-to-create-acct, #login-button {
+#need-to-create-acct, #loginButton {
     font-family: 'Varela Round';
     font-size: .7em;
     margin-top: .5em;
@@ -61,7 +71,7 @@ h1 {
     border-radius:4px;
 }
 
-#create-user-button {
+#createButton {
     font-family: 'Varela Round';
     font-size: .7em;
     margin-top: .5em;
