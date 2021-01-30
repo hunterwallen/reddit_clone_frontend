@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 class NewPost extends Component {
 
   state = {
-    author: "",
     title: "",
     body: ""
   }
@@ -18,7 +17,6 @@ class NewPost extends Component {
     event.preventDefault()
     this.props.handleSubmit(this.state)
     this.setState({
-      author: "",
       title: "",
       body: ""
     })
@@ -31,7 +29,6 @@ class NewPost extends Component {
         <br/>
         <form onSubmit={this.handleSubmit}>
           <input type="text" id="title" placeholder="Title" onChange={this.handleChange} />
-          <input type="text" id="author" placeholder="Author" onChange={this.handleChange} />
           <br/>
           <textarea id="body" placeholder="Text" onChange={this.handleChange}></textarea>
           <br/>
