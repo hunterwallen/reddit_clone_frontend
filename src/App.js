@@ -137,10 +137,17 @@ class App extends Component {
         <div id="newUserDiv" style={{display:"none"}}>
           <NewUser createUser={this.createUser} toggleAuthDivs={this.toggleAuthDivs} />
         </div>
-        <main>
-                  <Post posts={this.state.posts} deletePost={this.deletePost} handleSubmit={this.handleSubmit} handleEdit={this.handleEdit} currentUser={this.state.currentUser}/>
-        </main>
-      </div>
+
+        <div id="flex-container"></div>
+          <main>
+                    <Post posts={this.state.posts} deletePost={this.deletePost} handleSubmit={this.handleSubmit} handleEdit={this.handleEdit} currentUser={this.state.currentUser}/>
+          </main>
+
+          <div id="sidebar">
+          </div>
+
+        </div>
+
     );
   }
 }

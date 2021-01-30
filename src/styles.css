@@ -39,7 +39,7 @@ h1 {
 }
 
 #loginNavButton, #createNavButton {
-    padding: 1em;
+    padding: 1em 1em 0 1em;
     color: gray;
 }
 
