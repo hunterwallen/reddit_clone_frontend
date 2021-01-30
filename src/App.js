@@ -2,24 +2,38 @@ import React, { Component } from 'react'
 import Post from './components/Post'
 import NewUser from './components/NewUser'
 import Login from './components/Login'
+import CreateSub from './components/CreateSub'
 import axios from 'axios'
 
 class App extends Component {
   state = {
     posts: [],
-    currentUser: {}
+    currentUser: {},
+    subreddits: []
   }
 
   componentDidMount = () => {
     this.getPosts()
+    this.getSubreddits()
   }
 
   getPosts = () => {
     axios.get('https://reddit-two-point-oh.herokuapp.com/posts').then((response) => {
         this.setState({
           posts: response.data,
-          currentUser: this.state.currentUser
+          currentUser: this.state.currentUser,
+          subreddits: this.state.subreddits
         })
+    })
+  }
+
+  getSubreddits = () => {
+    axios.get('https://reddit-two-point-oh.herokuapp.com/subreddits').then((response) => {
+      this.setState({
+        posts: this.state.posts,
+        currentUser: this.state.currentUser,
+        subreddits: response.data
+      })
     })
   }
 
@@ -49,7 +63,8 @@ class App extends Component {
     axios.post('https://reddit-two-point-oh.herokuapp.com/accounts', info).then((response) => {
       this.setState({
         posts: this.state.posts,
-        currentUser: response.data
+        currentUser: response.data,
+        subreddits: this.state.subreddits
       })
     })
   }
@@ -69,12 +84,21 @@ class App extends Component {
         document.querySelector('#loginDiv').style.display = "none"
         setTimeout(()=> {document.querySelector('#login_failed').style.display = "none"}, 1002)
         document.querySelector('#newPostLoggedIn').style.display = 'flex'
+        document.querySelector('#newSubDiv').style.display = "flex"
       } else {
         this.setState({
           posts: this.state.posts,
-          currentUser: {}
+          currentUser: {},
+          subreddits: this.state.subreddits
         })
       }
+    })
+  }
+
+  createSub = (info) => {
+    info.created_by = this.state.currentUser.user_id
+    axios.post("https://reddit-two-point-oh.herokuapp.com/subreddits", info).then((response) => {
+      this.getSubreddits()
     })
   }
 
@@ -83,9 +107,11 @@ class App extends Component {
     document.querySelector('#createNavButton').style.display = "flex"
     document.querySelector('#logoutNavButton').style.display = "none"
     document.querySelector('#newPostLoggedIn').style.display = 'none'
+    document.querySelector('#newSubDiv').style.display = "none"
     this.setState({
       posts: this.state.posts,
-      currentUser: {}
+      currentUser: {},
+      subreddits: this.state.subreddits
     })
   }
 
@@ -121,6 +147,8 @@ class App extends Component {
     }
   }
 
+
+
   render = () => {
     return (
       <div>
@@ -136,6 +164,9 @@ class App extends Component {
         </div>
         <div id="newUserDiv" style={{display:"none"}}>
           <NewUser createUser={this.createUser} toggleAuthDivs={this.toggleAuthDivs} />
+        </div>
+        <div id="newSubDiv" style={{display:"none"}}>
+          <CreateSub createSub={this.createSub} />
         </div>
         <main>
                   <Post posts={this.state.posts} deletePost={this.deletePost} handleSubmit={this.handleSubmit} handleEdit={this.handleEdit} currentUser={this.state.currentUser}/>
