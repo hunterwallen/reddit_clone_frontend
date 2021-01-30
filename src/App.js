@@ -3,9 +3,6 @@ import Post from './components/Post'
 import NewUser from './components/NewUser'
 import axios from 'axios'
 
-
-
-
 class App extends Component {
   state = {
     posts: [],
@@ -26,19 +23,19 @@ class App extends Component {
   }
 
   deletePost = (id) => {
-    axios.delete('https://reddit-two-point-oh.herokuapp.com/posts/' + id).then((response) => {
+    axios.delete('/posts/' + id).then((response) => {
       this.getPosts()
     })
   }
 
   handleSubmit = (info) => {
-    axios.post('https://reddit-two-point-oh.herokuapp.com/posts', info).then((response) => {
+    axios.post('/posts', info).then((response) => {
       this.getPosts()
     })
   }
 
   handleEdit = (info, postId) => {
-    axios.put('https://reddit-two-point-oh.herokuapp.com/posts/' + postId, info).then((response) => {
+    axios.put('/posts/' + postId, info).then((response) => {
       this.getPosts()
     })
   }
@@ -57,12 +54,14 @@ class App extends Component {
   render = () => {
     return (
       <div>
-        <h1>Working</h1>
+        <div id="nav">
+          <img src="https://ps.w.org/wp-avatar/assets/icon-256x256.png?rev=1787902" id="reddit-icon"/>
+          <h1>reddit 2.0</h1>
+        </div>
         <NewUser createUser={this.createUser} />
         <Post posts={this.state.posts} deletePost={this.deletePost} handleSubmit={this.handleSubmit} handleEdit={this.handleEdit}/>
       </div>
     );
   }
 }
-
 export default App;
