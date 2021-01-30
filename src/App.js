@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Post from './components/Post'
 import NewUser from './components/NewUser'
+import Login from './components/Login'
 import axios from 'axios'
 
 class App extends Component {
@@ -42,7 +43,7 @@ class App extends Component {
 
 
   createUser = (info) => {
-    axios.post('https://reddit-two-point-oh.herokuapp.com/accounts', info).then((response) => {
+    axios.post('/accounts', info).then((response) => {
       this.setState({
         posts: this.state.posts,
         currentUser: response.data
@@ -50,6 +51,70 @@ class App extends Component {
     })
   }
 
+  submitLogin = (creds) => {
+    console.log(creds);
+    axios.post('/accounts/login', creds).then((response) => {
+      console.log(response);
+      if(response.data.username) {
+        this.setState({
+          posts: this.state.posts,
+          currentUser: response.data
+        })
+        document.querySelector('#loginNavButton').style.display = "none"
+        document.querySelector('#createNavButton').style.display = "none"
+        document.querySelector('#logoutNavButton').style.display = "flex"
+        document.querySelector('#loginDiv').style.display = "none"
+        setTimeout(()=> {document.querySelector('#login_failed').style.display = "none"}, 1002)
+      } else {
+        this.setState({
+          posts: this.state.posts,
+          currentUser: {}
+        })
+      }
+    })
+  }
+
+  logout = () => {
+    document.querySelector('#loginNavButton').style.display = "flex"
+    document.querySelector('#createNavButton').style.display = "flex"
+    document.querySelector('#logoutNavButton').style.display = "none"
+    this.setState({
+      posts: this.state.posts,
+      currentUser: {}
+    })
+  }
+
+  toggleAuthDivs = () => {
+    if(document.querySelector('#loginDiv').style.display === "none") {
+      document.querySelector('#loginDiv').style.display = "flex"
+      document.querySelector('#newUserDiv').style.display = "none"
+    } else {
+      document.querySelector('#loginDiv').style.display = "none"
+      document.querySelector('#newUserDiv').style.display = "flex"
+    }
+  }
+
+  showLogin = () => {
+    let loginDiv = document.querySelector('#loginDiv').style.display
+    if(loginDiv === "none") {
+      document.querySelector('#loginDiv').style.display = "flex"
+      document.querySelector('#newUserDiv').style.display = "none"
+    } else {
+      document.querySelector('#loginDiv').style.display = "none"
+      document.querySelector('#newUserDiv').style.display = "none"
+    }
+  }
+
+  showCreate = () => {
+    let createDiv = document.querySelector('#newUserDiv').style.display
+    if( createDiv === "none"){
+      document.querySelector('#loginDiv').style.display = "none"
+      document.querySelector('#newUserDiv').style.display = "flex"
+    } else {
+      document.querySelector('#loginDiv').style.display = "none"
+      document.querySelector('#newUserDiv').style.display = "none"
+    }
+  }
 
   render = () => {
     return (
@@ -57,8 +122,16 @@ class App extends Component {
         <div id="nav">
           <img src="https://ps.w.org/wp-avatar/assets/icon-256x256.png?rev=1787902" id="reddit-icon"/>
           <h1>reddit 2.0</h1>
+          <h3 onClick={this.showLogin} id="loginNavButton">Login</h3>
+          <h3 onClick={this.showCreate} id="createNavButton">Create Account</h3>
+          <h3 onClick={this.logout} id="logoutNavButton" style={{display:"none"}}>Log Out</h3>
         </div>
-        <NewUser createUser={this.createUser} />
+        <div id="loginDiv" style={{display:"none"}}>
+          <Login submitLogin={this.submitLogin} currentUser={this.state.currentUser} toggleAuthDivs={this.toggleAuthDivs} />
+        </div>
+        <div id="newUserDiv" style={{display:"none"}}>
+          <NewUser createUser={this.createUser} toggleAuthDivs={this.toggleAuthDivs} />
+        </div>
         <Post posts={this.state.posts} deletePost={this.deletePost} handleSubmit={this.handleSubmit} handleEdit={this.handleEdit}/>
       </div>
     );
