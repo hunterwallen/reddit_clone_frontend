@@ -31,7 +31,8 @@ class App extends Component {
 
   handleSubmit = (info) => {
     info.author = this.state.currentUser.username
-    info.user_id = this.state.currentUser.user_id
+    info.user_id = Number(this.state.currentUser.user_id)
+    console.log(info);
     axios.post('https://reddit-two-point-oh.herokuapp.com/posts', info).then((response) => {
       this.getPosts()
     })
