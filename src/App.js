@@ -58,8 +58,10 @@ class App extends Component {
           <img src="https://ps.w.org/wp-avatar/assets/icon-256x256.png?rev=1787902" id="reddit-icon"/>
           <h1>reddit 2.0</h1>
         </div>
+        <main>
         <NewUser createUser={this.createUser} />
         <Post posts={this.state.posts} deletePost={this.deletePost} handleSubmit={this.handleSubmit} handleEdit={this.handleEdit}/>
+        </main>
       </div>
     );
   }
