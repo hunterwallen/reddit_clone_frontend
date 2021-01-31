@@ -20,11 +20,17 @@ class Post extends Component {
   render = () => {
     return (
       <div>
-        <div id='newPostLoggedIn' style={{display:"none"}}>
-          <NewPost currentUser ={this.props.currentUser} handleSubmit={this.handleSubmit} />
-        </div>
+        {this.props.currentUser.username ?
+          <div id='newPostLoggedIn'>
+            <NewPost currentUser={this.props.currentUser} currentSub={this.props.currentSubredditId} handleSubmit={this.handleSubmit} />
+          </div>
+        :
+      null}
         {this.props.posts.map((post) => {
-          return (<div id="post-id">
+          return (
+            post.subreddit_id === this.props.currentSubredditId ?
+
+            <div id="post-id">
             <h6>Posted by /{post.author}</h6>
             <h4>{post.title}</h4>
             <h5>{post.body}</h5>
@@ -35,8 +41,9 @@ class Post extends Component {
               </div>
             : null }
           </div>
-        )
-      }).reverse()}
+
+            : null)}).reverse()}
+
       </div>
     )
   }

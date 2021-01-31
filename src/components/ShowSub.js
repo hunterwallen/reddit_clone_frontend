@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import Post from './Post'
 
 class ShowSub extends Component {
 
@@ -16,6 +16,10 @@ class ShowSub extends Component {
           <div>
             <h4>{subreddit.name}</h4>
             <h5>{subreddit.description}</h5>
+            <main id="postMain">
+                      <Post posts={this.props.posts} deletePost={this.props.deletePost} handleSubmit={this.props.handleSubmit} handleEdit={this.props.handleEdit} currentUser={this.props.currentUser}
+                      currentSubredditId={subreddit.sub_reddit_id}/>
+            </main>
           </div>
           : null
          )

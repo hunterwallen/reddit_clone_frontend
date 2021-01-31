@@ -26,7 +26,7 @@ class App extends Component {
           posts: response.data,
           currentUser: this.state.currentUser,
           subreddits: this.state.subreddits,
-          viewingSub: ""
+          viewingSub: this.state.viewingSub
         })
     })
   }
@@ -51,6 +51,7 @@ class App extends Component {
   handleSubmit = (info) => {
     info.author = this.state.currentUser.username
     info.user_id = Number(this.state.currentUser.user_id)
+    info.subreddit_id = Number(this.state.viewingSub)
     console.log(info);
     axios.post('https://reddit-two-point-oh.herokuapp.com/posts', info).then((response) => {
       this.getPosts()
@@ -91,7 +92,7 @@ class App extends Component {
         document.querySelector('#logged-in').style.display = "flex"
         document.querySelector('#loginDiv').style.display = "none"
         setTimeout(()=> {document.querySelector('#login_failed').style.display = "none"}, 1002)
-        document.querySelector('#newPostLoggedIn').style.display = 'flex'
+
       } else {
         this.setState({
           posts: this.state.posts,
@@ -127,7 +128,6 @@ class App extends Component {
     document.querySelector('#loginNavButton').style.display = "flex"
     document.querySelector('#createNavButton').style.display = "flex"
     document.querySelector('#logged-in').style.display = "none"
-    document.querySelector('#newPostLoggedIn').style.display = 'none'
     document.querySelector('#newSubDiv').style.display = "none"
     this.setState({
       posts: this.state.posts,
@@ -182,7 +182,6 @@ class App extends Component {
     let exploreSubs = document.querySelector('#exploreSubs')
     if(exploreSubs.style.display === "none") {
         document.querySelector('#newSubDiv').style.display = 'none'
-        document.querySelector('#postMain').style.display = 'none'
         document.querySelector('#showSub').style.display = 'none'
         document.querySelector('#exploreSubs').style.display = 'flex'
 
@@ -243,12 +242,10 @@ class App extends Component {
           <ExploreSubs appState={this.state} showSubreddit={this.showSubreddit}/>
         </div>
         <div id="showSub" style={{display:"none"}}>
-          <ShowSub appState={this.state} />
+          <ShowSub posts={this.state.posts} deletePost={this.deletePost} handleSubmit={this.handleSubmit} handleEdit={this.handleEdit} currentUser={this.state.currentUser}
+          appState={this.state} />
         </div>
         <div id="flex-container"></div>
-          <main id="postMain">
-                    <Post posts={this.state.posts} deletePost={this.deletePost} handleSubmit={this.handleSubmit} handleEdit={this.handleEdit} currentUser={this.state.currentUser}/>
-          </main>
 
           <div id="sidebar">
           </div>
