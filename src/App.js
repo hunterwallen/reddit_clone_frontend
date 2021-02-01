@@ -184,10 +184,11 @@ class App extends Component {
     if(exploreSubs.style.display === "none") {
         document.querySelector('#newSubDiv').style.display = 'none'
         document.querySelector('#showSub').style.display = 'none'
+        document.querySelector('#loginDiv').style.display = "none"
+        document.querySelector('#newUserDiv').style.display = "none"
         document.querySelector('#exploreSubs').style.display = 'flex'
 
       } else {
-        document.querySelector('#postMain').style.display = 'flex'
         document.querySelector('#exploreSubs').style.display = 'none'
       }
   }
