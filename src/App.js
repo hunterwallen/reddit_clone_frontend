@@ -139,6 +139,7 @@ class App extends Component {
       })
       document.querySelector('#showSub').style.display = "flex"
       document.querySelector('#exploreSubs').style.display = "none"
+      document.querySelector('#newSubDiv').style.display = "none"
   }
 
   logout = () => {
