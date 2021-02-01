@@ -2,6 +2,9 @@
   "name": "reddit_clone_frontend",
   "version": "0.1.0",
   "private": true,
+  "engines" : {
+    "node": "15.1.0"
+  },
   "proxy": "https://reddit-two-point-oh.herokuapp.com/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
