@@ -213,7 +213,9 @@ class App extends Component {
 
           <div id="logo" onClick={this.goHome}>
             <img src="https://ps.w.org/wp-avatar/assets/icon-256x256.png?rev=1787902" id="reddit-icon"/>
-            <h1>reddit 2.0</h1>
+            <a href="/" id="h1-logo">
+              <h1>reddit 2.0</h1>
+            </a>
           </div>
 
           <div id="nav-commands">

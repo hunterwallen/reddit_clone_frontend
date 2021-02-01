@@ -40,6 +40,10 @@ h1 {
     transform: translateY(5px);
 }
 
+#h1-logo:hover {
+    color: black;
+}
+
 #logo {
     display: flex;
     flex-direction: row;
