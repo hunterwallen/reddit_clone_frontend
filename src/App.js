@@ -29,6 +29,7 @@ class App extends Component {
           subreddits: this.state.subreddits,
           viewingSub: this.state.viewingSub
         })
+        console.log(response.data);
     })
   }
 
@@ -53,9 +54,13 @@ class App extends Component {
     info.author = this.state.currentUser.username
     info.user_id = Number(this.state.currentUser.user_id)
     info.subreddit_id = Number(this.state.viewingSub)
-    console.log(info);
+    let newPostId = ''
     axios.post('https://reddit-two-point-oh.herokuapp.com/posts', info).then((response) => {
       this.getPosts()
+      newPostId = response.data.id
+      axios.put('https://reddit-two-point-oh.herokuapp.com/subreddits/', {post_id: newPostId, subreddit_id: info.subreddit_id}).then((response) => {
+        this.getSubreddits()
+      })
     })
   }
 
@@ -78,7 +83,6 @@ class App extends Component {
   }
 
   submitLogin = (creds) => {
-    console.log(creds);
     axios.post('https://reddit-two-point-oh.herokuapp.com/accounts/login', creds).then((response) => {
       console.log(response);
       if(response.data.username) {
