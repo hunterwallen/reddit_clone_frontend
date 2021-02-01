@@ -124,7 +124,7 @@ h1 {
     border-radius:4px;
     filter: drop-shadow(-3px 4px 4px gray);
     position: absolute;
-    z-index: 1;
+    z-index: 2;
 }
 
 #createButton {
@@ -246,7 +246,6 @@ textarea {
 
 #sidebar {
     margin: 2em 0 3em 0;
-    position: relative;
 }
 
 .sidebar {
@@ -322,9 +321,12 @@ a:hover {
 
 /* Explore Subreddits */
 #explore-subreddits {
-    margin: 3em;
+    margin: 2em 0 3em 2em;
     padding: 1em;
-    widtH: 50vw;
+    width: 50vw;
+    background-color: whitesmoke;
+    position: absolute;
+    z-index: 1;
 }
 
 #subreddit-description {
