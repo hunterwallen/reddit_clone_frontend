@@ -10,13 +10,13 @@ class ExploreSubs extends Component {
 
   render = () => {
     return (
-      <div>
-        <h1>Subreddits</h1>
+      <div id="explore-subreddits">
+        <h3>Subreddits</h3>
         {this.props.appState.subreddits.map((subreddit) => {
           return (
-          <div id={subreddit.sub_reddit_id} onClick={this.showSubreddit}>
-            <h4>{subreddit.name}</h4>
-            <h5>{subreddit.description}</h5>
+          <div class="subreddit-list" id={subreddit.sub_reddit_id} onClick={this.showSubreddit}>
+            <h4 id="subreddit-name">{subreddit.name}</h4>
+            <h5 id="subreddit-description">{subreddit.description}</h5>
           </div>
         )
       }).reverse()}

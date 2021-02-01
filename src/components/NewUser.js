@@ -75,7 +75,7 @@ class NewUser extends Component {
 
           
           <input type="submit" id="createButton" value="Create Account" 
-          style={{display:"none"}} 
+          style={{opacity: 0.5}} 
           />
         </form>
       </div>
