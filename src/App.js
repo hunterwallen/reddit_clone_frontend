@@ -38,7 +38,7 @@ class App extends Component {
         posts: this.state.posts,
         currentUser: this.state.currentUser,
         subreddits: response.data.reverse(),
-        viewingSub: ""
+        viewingSub: this.state.viewingSub
       })
     })
   }
@@ -92,7 +92,7 @@ class App extends Component {
         document.querySelector('#createNavButton').style.display = "none"
         document.querySelector('#logged-in').style.display = "flex"
         document.querySelector('#loginDiv').style.display = "none"
-        setTimeout(()=> {document.querySelector('#login_failed').style.display = "none"}, 1002)
+        setTimeout(()=> {document.querySelector('#login_failed').style.display = "none"}, 2002)
 
       } else {
         this.setState({
@@ -108,6 +108,22 @@ class App extends Component {
   createSub = (info) => {
     info.created_by = this.state.currentUser.user_id
     axios.post("https://reddit-two-point-oh.herokuapp.com/subreddits", info).then((response) => {
+      this.getSubreddits()
+    })
+  }
+
+  joinSub = (subInfo) => {
+    axios.put("https://reddit-two-point-oh.herokuapp.com/followsub", subInfo).then((response) => {
+    })
+    axios.put("https://reddit-two-point-oh.herokuapp.com/addsub", subInfo).then((response) => {
+      this.getSubreddits()
+    })
+  }
+
+  leaveSub = (subInfo) => {
+    axios.put("https://reddit-two-point-oh.herokuapp.com/unfollowsub", subInfo).then((response) => {
+    })
+    axios.put("https://reddit-two-point-oh.herokuapp.com/leavesub", subInfo).then((response) => {
       this.getSubreddits()
     })
   }
@@ -196,9 +212,10 @@ class App extends Component {
   goHome = () => {
 
       document.querySelector('#newSubDiv').style.display = 'none'
-      document.querySelector('#postMain').style.display = 'flex'
       document.querySelector('#exploreSubs').style.display = 'none'
       document.querySelector('#showSub').style.display = "none"
+      document.querySelector('#loginDiv').style.display = "none"
+      document.querySelector('#newUserDiv').style.display = "none"
       this.setState({
         posts: this.state.posts,
         currentUser: this.state.currentUser,
@@ -214,9 +231,7 @@ class App extends Component {
 
           <div id="logo" onClick={this.goHome}>
             <img src="https://ps.w.org/wp-avatar/assets/icon-256x256.png?rev=1787902" id="reddit-icon"/>
-            <a href="/" id="h1-logo">
-              <h1>reddit 2.0</h1>
-            </a>
+            <h1>reddit 2.0</h1>
           </div>
 
           <div id="nav-commands">
@@ -253,7 +268,7 @@ class App extends Component {
         </div>
         <div id="showSub" style={{display:"none"}}>
           <ShowSub posts={this.state.posts} deletePost={this.deletePost} handleSubmit={this.handleSubmit} handleEdit={this.handleEdit} currentUser={this.state.currentUser}
-          appState={this.state} />
+          appState={this.state} joinSub={this.joinSub} leaveSub={this.leaveSub}/>
         </div>
         <div id="flex-container">
 
