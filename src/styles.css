@@ -1,4 +1,5 @@
 body {
+    font-family: 'Quicksand', sans-serif;
     background-color: gainsboro;
     margin: 0;
 }
@@ -7,6 +8,10 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+button:hover {
+    cursor: pointer;
 }
 
 /* Navigation bar */
@@ -35,6 +40,10 @@ h1 {
     transform: translateY(5px);
 }
 
+#h1-logo:hover {
+    color: black;
+}
+
 #logo {
     display: flex;
     flex-direction: row;
@@ -48,7 +57,11 @@ h1 {
     justify-content: space-between;
 }
 
-#not-logged-in{
+#not-logged-in {
+    display: flex;
+}
+
+#logged-in {
     display: flex;
 }
 
@@ -57,30 +70,51 @@ h1 {
     color: gray;
 }
 
-#loginNavButton, #createNavButton, #logoutNavButton {
+#loginNavButton, #createNavButton, #exploreSubRedditsButton, #logoutNavButton {
     padding: 1em 1em 0 1em;
     color: gray;
 }
 
-#logoutNavButton {
-    
+#newSubNavButton {
+    padding: 1em 6em 0 1em;
+}
+
+#loginNavButton:hover, #createNavButton:hover, #exploreSubRedditsButton:hover, #logoutNavButton:hover {
+    cursor: pointer;
+    color: black;
+}
+
+#newSubNavButton:hover {
+    cursor: pointer;
+    color: #f68d49;
 }
 
 /* Login */
 #need-to-create-acct, #loginButton {
     font-family: 'Varela Round';
     font-size: .7em;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: .5em;
     padding: .5em 1.5em;
-    background-color: whitesmoke;
+    background-color:whitesmoke;
     color: black;
     border: 0;
     border-radius: 4px;
 }
 
+#login_failed {
+    font-family: 'Varela Round';
+    font-size: .7em; 
+}
+
+.form {
+    text-align: center;
+}
+
 /* Create a user */
 
-#user-login, #new-user{
+#user-login, #new-user {
     background-color:#f68d49;
     display: flex;
     flex-direction: column;
@@ -93,6 +127,8 @@ h1 {
     border: 1px solid #f68d49;;
     border-radius:4px;
     filter: drop-shadow(-3px 4px 4px gray);
+    position: absolute;
+    z-index: 2;
 }
 
 #createButton {
@@ -129,14 +165,14 @@ h4 {
 }
 
 h5 {
-    font-family: Arial;
+    font-family: 'Quicksand', sans-serif;
     font-weight: lighter;
     margin-top: 0;
     padding: 0;
 }
 
 h6 {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-size: .6em;
     font-weight: lighter;
     color: rgb(189, 189, 189);
@@ -153,9 +189,9 @@ h6 {
 input[type=text], input[type=password] {
     width: 173px;
     margin: .5em;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-size: .7em;
-    border: 1px solid #eee;
+    border: 2px solid #eee;
 }
 
 textarea {
@@ -200,4 +236,107 @@ textarea {
 
 #flex-container {
     display: flex;
+    flex-direction: row;
+}
+
+/* Posts Scroll */
+
+#post-scroll {
+    padding: 5em 3em 3em 3em;
+    width: 50vw;
+}
+
+/* Sidebar */
+
+#sidebar {
+    margin: 2em 0 3em 0;
+}
+
+.sidebar {
+    padding: 1em;
+    width: 25vw;
+    background-color: whitesmoke;
+    border-radius: 8px;
+}
+
+#popular-subreddits {
+    /* padding: 1em; */
+    width: 25vw;
+    background-color: whitesmoke;
+    border-radius: 8px;
+}
+
+#popular-subreddits-title {
+    margin: 0 0 1em 0;
+    padding-left: .25em;
+}
+
+#sidebar-title-1 {
+    margin: -1em -1em 0 -1em;
+    padding-top: 1.5em;
+    /* background-image: url('https://media-exp1.licdn.com/dms/image/C511BAQE0NnIkjkotGA/company-background_10000/0/1541489744017?e=2159024400&v=beta&t=8CzJngJh5TrtF6_WFRYSlDeycAkT52hAfb4qLYGYnv8'); */
+    background-color: rgb(189, 229, 245);
+}
+
+#sidebar-title-2 {
+    margin: -1em -1em .0 -1em;
+    padding-top: 1.5em;
+    /* background-image: url('https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/4-many-starts-on-blue-dark-night-sky-as-a-cosmos-background-oleg-mayorov.jpg'); */
+    background-color: rgb(3, 3, 36);
+    color: rgb(245, 235, 182);
+}
+
+#unicorn {
+    width: 10px;
+}
+
+#subreddit-name, #subreddit-created_by {
+    padding: .25em;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: coral;
+}
+
+#ad-space {
+    text-align: center;
+    margin-top: 1em;
+    /* padding-top: 1em; */
+    width: 25vw;
+}
+
+#ad {
+    width: 23vw;
+}
+
+#trending-users {
+    margin-top: 1em;
+    /* padding: 1em; */
+    width: 25vw;
+    background-color: whitesmoke;
+    border-radius: 8px;
+}
+
+/* Explore Subreddits */
+#explore-subreddits {
+    margin: 2em 0 3em 2em;
+    padding: 1em;
+    width: 50vw;
+    background-color: whitesmoke;
+    position: absolute;
+    z-index: 1;
+}
+
+#subreddit-description {
+    color: rgb(63, 63, 63);
+}
+
+.subreddit-list {
+
 }
