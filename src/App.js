@@ -5,6 +5,7 @@ import Login from './components/Login'
 import CreateSub from './components/CreateSub'
 import ExploreSubs from './components/ExploreSubs'
 import ShowSub from './components/ShowSub'
+import Sidebar from './components/Sidebar'
 import axios from 'axios'
 
 class App extends Component {
@@ -212,20 +213,28 @@ class App extends Component {
 
           <div id="logo" onClick={this.goHome}>
             <img src="https://ps.w.org/wp-avatar/assets/icon-256x256.png?rev=1787902" id="reddit-icon"/>
-            <h1>reddit 2.0</h1>
+            <a href="/" id="h1-logo">
+              <h1>reddit 2.0</h1>
+            </a>
           </div>
 
           <div id="nav-commands">
+
+              {/* NOT LOGGED IN */}
               <div id="not-logged-in">
                 <h3 onClick={this.showLogin} id="loginNavButton">Login</h3>
                 <h3 onClick={this.showCreate} id="createNavButton">Create Account</h3>
-                <h3 onClick={this.exploreSubs}>Explore SubReddits</h3>
+                <h3 onClick={this.exploreSubs} id="exploreSubRedditsButton">Explore SubReddits</h3>
               </div>
+
+              {/* LOGGED IN */}
               <div id="logged-in" style={{display:"none"}}>
-                <h3 onClick={this.toggleNewSub} id="newSubNavButton">Create New Subreddit 2.0</h3>
+                <h3 onClick={this.toggleNewSub} id="newSubNavButton">Create New SubReddit 2.0</h3>
+
                 <h3 onClick={this.logout} id="logoutNavButton">
                   Log Out</h3>
               </div>
+
             </div>
 
         </div>
@@ -245,10 +254,17 @@ class App extends Component {
           <ShowSub posts={this.state.posts} deletePost={this.deletePost} handleSubmit={this.handleSubmit} handleEdit={this.handleEdit} currentUser={this.state.currentUser}
           appState={this.state} />
         </div>
-        <div id="flex-container"></div>
+        <div id="flex-container">
+
+          <div id="post-scroll">
+            Please log in to see posts.
+          </div>
 
           <div id="sidebar">
+            <Sidebar appState={this.state} showSubreddit={this.showSubreddit}/>
           </div>
+
+        </div>
 
         </div>
     );
