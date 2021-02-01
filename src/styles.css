@@ -243,12 +243,20 @@ textarea {
 /* Sidebar */
 
 #sidebar {
-    margin: 4em 0 3em 0;
+    margin: 2em 0 3em 0;
+    position: relative;
+}
+
+.sidebar {
+    padding: 1em;
+    width: 25vw;
+    background-color: whitesmoke;
+    border-radius: 8px;
 }
 
 #popular-subreddits {
-    padding: 1em;
-    width: 28vw;
+    /* padding: 1em; */
+    width: 25vw;
     background-color: whitesmoke;
     border-radius: 8px;
 }
@@ -291,10 +299,21 @@ a:hover {
     color: coral;
 }
 
+#ad-space {
+    text-align: center;
+    margin-top: 1em;
+    /* padding-top: 1em; */
+    width: 25vw;
+}
+
+#ad {
+    width: 23vw;
+}
+
 #trending-users {
-    margin-top: 2em;
-    padding: 1em;
-    width: 28vw;
+    margin-top: 1em;
+    /* padding: 1em; */
+    width: 25vw;
     background-color: whitesmoke;
     border-radius: 8px;
 }
@@ -311,5 +330,5 @@ a:hover {
 }
 
 .subreddit-list {
-    
+
 }

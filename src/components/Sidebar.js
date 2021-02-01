@@ -8,7 +8,7 @@ class Sidebar extends Component {
         return (
         <div>
 
-        <div id="popular-subreddits">
+        <div class="sidebar" id="popular-subreddits">
             <div id="sidebar-title-1">
                 <h4 id="popular-subreddits-title">Popular SubReddits</h4>
             </div>
@@ -25,8 +25,11 @@ class Sidebar extends Component {
         }).reverse()}
         </div>
 
+        <div class="sidebar" id="ad-space">
+            <img src="https://s0.2mdn.net/9188754/CF011AG_January-BMF-Display-Ads_300x250_-_1.26.21.gif" id="ad"/>
+        </div>
         
-        <div id="trending-users">
+        <div class="sidebar" id="trending-users">
             <div id="sidebar-title-2">
                 <h4 id="popular-subreddits-title">Trending Contributors</h4>
             </div>
