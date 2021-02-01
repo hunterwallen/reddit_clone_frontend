@@ -123,6 +123,8 @@ h1 {
     border: 1px solid #f68d49;;
     border-radius:4px;
     filter: drop-shadow(-3px 4px 4px gray);
+    position: absolute;
+    z-index: 1;
 }
 
 #createButton {
