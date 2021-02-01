@@ -47,11 +47,10 @@ class Login extends Component {
           <form onSubmit={this.submitLogin}>
             <input type="text" id="email" onChange={this.handleChange} placeholder="Email"/>
             <input type="password" id="password" onChange={this.handleChange} placeholder="Password"/>
-            <br/>
 
-            <p id="login_failed" style={{display: "block"}}>Your username or password is invalid. Please try again.</p>
+            <p id="login_failed" style={{display: "none"}}>Your username or password is invalid. Please try again.</p>
 
-            <input type="submit" value="Login" style={{display:"flex"}} id="loginButton"/>
+            <input type="submit" value="Login" style={{opacity: 0.5}} id="loginButton"/>
           </form>
         </div>
 
