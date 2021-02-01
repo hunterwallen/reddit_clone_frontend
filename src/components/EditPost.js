@@ -6,7 +6,6 @@ import React, { Component } from 'react'
 class EditPost extends Component {
 
   state = {
-    author: "",
     title: "",
     body: ""
   }
@@ -17,7 +16,6 @@ class EditPost extends Component {
 
   changeState = () => {
     this.setState({
-      author: this.props.author,
       title: this.props.title,
       body: this.props.body
     })
@@ -54,8 +52,6 @@ class EditPost extends Component {
         <form onSubmit={this.handleEdit} style={{display: "none"}}>
           <p>Title</p>
           <input type="text" id="title" onChange={this.handleChange}  defaultValue={this.state.title}/>
-          <p>Author</p>
-          <input type="text" id="author" onChange={this.handleChange}  defaultValue={this.state.author}/>
           <p>Body</p>
           <textarea id="body" onChange={this.handleChange} defaultValue={this.state.body}></textarea>
           <input type="submit" value="Edit Post" />

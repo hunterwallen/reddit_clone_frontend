@@ -37,7 +37,7 @@ class Post extends Component {
             {Number(post.user_id) === this.props.currentUser.user_id ?
               <div id="myPostsOptions">
                 <button id={post.id} onClick={this.deletePost}>Delete Post</button>
-                <EditPost handleEdit={this.handleEdit} postId={post.id} author={post.author} title={post.title} body={post.body}/>
+                <EditPost handleEdit={this.handleEdit} postId={post.id} author={post.author} title={post.title} body={post.body} user_id={post.user_id}/>
               </div>
             : null }
           </div>
