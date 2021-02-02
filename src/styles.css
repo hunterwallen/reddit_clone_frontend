@@ -114,7 +114,7 @@ h1 {
 
 /* Create a user */
 
-#user-login, #new-user {
+/* #user-login, #new-user {
     background-color:#f68d49;
     display: flex;
     flex-direction: column;
@@ -129,7 +129,7 @@ h1 {
     filter: drop-shadow(-3px 4px 4px gray);
     position: absolute;
     z-index: 2;
-}
+} */
 
 #createButton {
     font-family: 'Varela Round';
