@@ -7,7 +7,7 @@ class Sidebar extends Component {
     }
 
     componentDidMount = () => {
-        setTimeout(()=>{this.getAuthors()}, 500)
+        setTimeout(()=>{this.getAuthors()}, 1000)
     }
 
     getAuthors = () => {
