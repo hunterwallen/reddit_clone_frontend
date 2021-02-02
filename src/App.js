@@ -113,6 +113,68 @@ class App extends Component {
     })
   }
 
+
+  joinSub = (subInfo) => {
+    axios.put("https://reddit-two-point-oh.herokuapp.com/followsub", subInfo).then((response) => {
+    })
+    axios.put("https://reddit-two-point-oh.herokuapp.com/addsub", subInfo).then((response) => {
+      this.getSubreddits()
+    })
+  }
+
+  leaveSub = (subInfo) => {
+    axios.put("https://reddit-two-point-oh.herokuapp.com/unfollowsub", subInfo).then((response) => {
+    })
+    axios.put("https://reddit-two-point-oh.herokuapp.com/leavesub", subInfo).then((response) => {
+      this.getSubreddits()
+    })
+  }
+
+
+  upvote = (post_id) => {
+    let postId = {
+      post_id: post_id
+    }
+    axios.put("https://reddit-two-point-oh.herokuapp.com/upvote", postId).then((response) => {
+    })
+    let info = {
+      user_id: this.state.currentUser.user_id,
+      post_id: post_id
+    }
+    axios.put("https://reddit-two-point-oh.herokuapp.com/react", info).then((response) => {
+      this.getPosts()
+      this.setState({
+        posts: this.state.posts,
+        currentUser: response.data,
+        subreddits: this.state.subreddits,
+        viewingSub: this.state.viewingSub
+      })
+    })
+  }
+
+  downvote = (post_id) => {
+    let postId = {
+      post_id: post_id
+    }
+    axios.put("https://reddit-two-point-oh.herokuapp.com/downvote", postId).then((response) => {
+    })
+    let info = {
+      user_id: this.state.currentUser.user_id,
+      post_id: post_id
+    }
+    axios.put("https://reddit-two-point-oh.herokuapp.com/react", info).then((response) => {
+      this.getPosts()
+      this.setState({
+        posts: this.state.posts,
+        currentUser: response.data,
+        subreddits: this.state.subreddits,
+        viewingSub: this.state.viewingSub
+      })
+    })
+  }
+
+
+
   showSubreddit = (id) => {
     let subId = id
     console.log(subId);
@@ -252,13 +314,14 @@ class App extends Component {
           <ExploreSubs appState={this.state} showSubreddit={this.showSubreddit}/>
         </div>
         <div id="showSub" style={{display:"none"}}>
-          <ShowSub posts={this.state.posts} deletePost={this.deletePost} handleSubmit={this.handleSubmit} handleEdit={this.handleEdit} currentUser={this.state.currentUser}
-          appState={this.state} />
+          <ShowSub posts={this.state.posts} deletePost={this.deletePost} handleSubmit={this.handleSubmit} handleEdit={this.handleEdit} currentUser={this.state.currentUser} 
+          appState={this.state} joinSub={this.joinSub} leaveSub={this.leaveSub} upVote={this.upvote} downVote={this.downvote} />
+
         </div>
         <div id="flex-container">
 
           <div id="post-scroll">
-            <MainFeed appState={this.state} currentUser={this.state.currentUser} />
+            <MainFeed appState={this.state} currentUser={this.state.currentUser} upVote={this.upvote} downVote={this.downvote} />
           </div>
 
           <div id="sidebar">
