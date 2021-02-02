@@ -10,9 +10,9 @@ class Login extends Component {
 
   checkQualified = (event) => {
     if(this.state.email === "" || this.state.password === "") {
-      document.querySelector('#loginButton').style.display = "none"
+      document.querySelector('#loginButton').style = "display: flex; opacity: 0.5; pointer-events: none;"
     } else {
-      document.querySelector('#loginButton').style.display = "block"
+      document.querySelector('#loginButton').style = "display: flex; opacity: 1.0; pointer-events: auto;"
     }
   }
 
@@ -50,7 +50,9 @@ class Login extends Component {
 
             <p id="login_failed" style={{display: "none"}}>Your username or password is invalid. Please try again.</p>
 
-            <input type="submit" value="Login" style={{opacity: 0.5}} id="loginButton"/>
+            <input type="submit" value="Login" 
+            // style={{opacity: 0.7}} 
+            id="loginButton"/>
           </form>
         </div>
 
