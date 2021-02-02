@@ -27,7 +27,7 @@ class ShowSub extends Component {
 
   render = () => {
     return (
-      <div>
+      <div className='showSubContainer'>
         {this.props.appState.subreddits.map((subreddit) => { return(
           this.props.appState.viewingSub === subreddit.sub_reddit_id ?
           <div>
