@@ -446,3 +446,57 @@ h2 {
 .votesCounterNumber {
   margin: 0 .5em;
 }
+
+
+#createSubButton {
+  font-family: 'Varela Round';
+  font-size: .8em;
+  margin: 1em 0;
+  padding: .5em 1em;
+  background-color: #C51700;
+  color: white;
+  border: 0;
+  border-radius: 4px;
+  align-self: flex-end;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+#createSubButton:hover {
+  cursor: pointer;
+  filter: drop-shadow(0 0 2px grey);
+}
+
+#new-sub {
+  margin: 2em 2em 3em 2em;
+  padding: 2em 1em;
+  width: 50vw;
+  background-color: whitesmoke;
+  z-index: 1;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+}
+
+
+#create-a-sub {
+  font-size: 1.5em;
+  margin-bottom: .5em;
+}
+
+.createSubForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.createSubForm input[type=textarea], .createSubForm input[type=text], .createSubForm select {
+  width: 173px;
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  font-size: .7em;
+  border: 2px solid #eee;
+  padding: .7em;
+}
