@@ -247,10 +247,11 @@ class App extends Component {
     if(exploreSubs.style.display === "none") {
         document.querySelector('#newSubDiv').style.display = 'none'
         document.querySelector('#showSub').style.display = 'none'
+        document.querySelector('#post-scroll').style.display = 'none'
         document.querySelector('#exploreSubs').style.display = 'flex'
 
       } else {
-        document.querySelector('#postMain').style.display = 'flex'
+          document.querySelector('#post-scroll').style.display = 'flex'
         document.querySelector('#exploreSubs').style.display = 'none'
       }
   }
@@ -258,7 +259,8 @@ class App extends Component {
   goHome = () => {
 
       document.querySelector('#newSubDiv').style.display = 'none'
-      document.querySelector('#postMain').style.display = 'flex'
+      document.querySelector('#loginDiv').style.display = "none"
+      document.querySelector('#newUserDiv').style.display = "none"
       document.querySelector('#exploreSubs').style.display = 'none'
       document.querySelector('#showSub').style.display = "none"
       this.setState({
@@ -276,9 +278,7 @@ class App extends Component {
 
           <div id="logo" onClick={this.goHome}>
             <img src="https://ps.w.org/wp-avatar/assets/icon-256x256.png?rev=1787902" id="reddit-icon"/>
-            <a href="/" id="h1-logo">
               <h1>reddit 2.0</h1>
-            </a>
           </div>
 
           <div id="nav-commands">
@@ -310,24 +310,25 @@ class App extends Component {
          <div id="newSubDiv" style={{display:"none"}}>
           <CreateSub createSub={this.createSub} />
         </div>
-        <div id="exploreSubs" style={{display:"none"}}>
-          <ExploreSubs appState={this.state} showSubreddit={this.showSubreddit}/>
-        </div>
-        <div id="showSub" style={{display:"none"}}>
-          <ShowSub posts={this.state.posts} deletePost={this.deletePost} handleSubmit={this.handleSubmit} handleEdit={this.handleEdit} currentUser={this.state.currentUser} 
-          appState={this.state} joinSub={this.joinSub} leaveSub={this.leaveSub} upVote={this.upvote} downVote={this.downvote} />
 
-        </div>
         <div id="flex-container">
+          <div id="exploreSubs" style={{display:"none"}}>
+            <ExploreSubs appState={this.state} showSubreddit={this.showSubreddit}/>
+          </div>
+          <div id="showSub" style={{display:"none"}}>
+            <ShowSub posts={this.state.posts} deletePost={this.deletePost} handleSubmit={this.handleSubmit} handleEdit={this.handleEdit} currentUser={this.state.currentUser}
+            appState={this.state} joinSub={this.joinSub} leaveSub={this.leaveSub} upVote={this.upvote} downVote={this.downvote} />
+
+          </div>
 
           <div id="post-scroll">
             <MainFeed appState={this.state} currentUser={this.state.currentUser} upVote={this.upvote} downVote={this.downvote} />
           </div>
 
           <div id="sidebar">
-            <Sidebar 
-              appState={this.state} 
-              showSubreddit={this.showSubreddit} 
+            <Sidebar
+              appState={this.state}
+              showSubreddit={this.showSubreddit}
             />
           </div>
 
