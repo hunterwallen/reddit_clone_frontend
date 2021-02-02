@@ -321,9 +321,9 @@ class App extends Component {
           <div id="newUserDiv" style={{display:"none"}}>
             <NewUser createUser={this.createUser} toggleAuthDivs={this.toggleAuthDivs} />
           </div>
-           <div id="newSubDiv" style={{display:"none"}}>
-            <CreateSub createSub={this.createSub} />
-          </div>
+          <div id="newSubDiv" style={{display:"none"}}>
+           <CreateSub createSub={this.createSub} />
+         </div>
 
 
 

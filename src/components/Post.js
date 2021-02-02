@@ -40,11 +40,11 @@ class Post extends Component {
               <img src={post.img_url} id="post-image-url" />
               : null }
 
-            <h5>{post.body}</h5>
+            <h5 className="postBody">{post.body}</h5>
             <UpAndDownVote post_id={post.id} upVote={this.props.upVote} downVote={this.props.downVote} currentUser={this.props.currentUser} votes={post.votes}/>
             {Number(post.user_id) === this.props.currentUser.user_id ?
               <div id="myPostsOptions">
-                <button id={post.id} onClick={this.deletePost}>Delete Post</button>
+                <button id={post.id} onClick={this.deletePost} className="deletePostButton">Delete Post</button>
                 <EditPost handleEdit={this.handleEdit} postId={post.id} author={post.author} title={post.title} body={post.body} user_id={post.user_id}/>
               </div>
             : null }
