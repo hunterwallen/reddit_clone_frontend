@@ -6,6 +6,7 @@ import CreateSub from './components/CreateSub'
 import ExploreSubs from './components/ExploreSubs'
 import ShowSub from './components/ShowSub'
 import Sidebar from './components/Sidebar'
+import MainFeed from './components/MainFeed'
 import axios from 'axios'
 
 class App extends Component {
@@ -257,7 +258,7 @@ class App extends Component {
         <div id="flex-container">
 
           <div id="post-scroll">
-            Please log in to see posts.
+            <MainFeed appState={this.state} currentUser={this.state.currentUser} />
           </div>
 
           <div id="sidebar">
