@@ -42,7 +42,7 @@ class Login extends Component {
     return (
       <div id="user-login">
         <div id="loginTitleAndForm">
-          <h5 id="create-a-post">Login</h5>
+          <h5 id="login-header"><span id="white-triangle">&#9651;</span> Login</h5>
           <br/>
           <div class="form">
             <form onSubmit={this.submitLogin} className="loginForm">
@@ -52,7 +52,6 @@ class Login extends Component {
               <p id="login_failed" style={{display: "none"}}>Your username or password is invalid. Please try again.</p>
 
               <input type="submit" value="Login"
-              // style={{opacity: 0.7}}
               id="loginButton"/>
             </form>
           </div>
