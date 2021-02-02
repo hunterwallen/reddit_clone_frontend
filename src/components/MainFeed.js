@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import UpAndDownVote from './UpAndDownVote'
 
 class MainFeed extends Component {
 
@@ -14,6 +14,7 @@ class MainFeed extends Component {
               <h6>Posted by /{post.author}</h6>
               <h4>{post.title}</h4>
               <h5>{post.body}</h5>
+              <UpAndDownVote upVote={this.props.upVote} downVote={this.props.downVote} currentUser={this.props.appState.currentUser} post_id={post.id} votes={post.votes} />
             </div>
           )
           }).reverse()
@@ -25,12 +26,14 @@ class MainFeed extends Component {
                     <h6>Posted by /{post.author}</h6>
                     <h4>{post.title}</h4>
                     <h5>{post.body}</h5>
+                    <UpAndDownVote upVote={this.props.upVote} downVote={this.props.downVote} currentUser={this.props.appState.currentUser} post_id={post.id} votes={post.votes} />
                   </div>
                   : (!this.props.currentUser.sub_reddit_id.includes(post.subreddit_id) ?
                   <div id="post-id" style={{order: "3"}}>
                     <h6>Posted by /{post.author}</h6>
                     <h4>{post.title}</h4>
                     <h5>{post.body}</h5>
+                    <UpAndDownVote upVote={this.props.upVote} downVote={this.props.downVote} currentUser={this.props.appState.currentUser} post_id={post.id} votes={post.votes} />
                   </div> : null
                       )
                     )
@@ -43,6 +46,7 @@ class MainFeed extends Component {
                 <h6>Posted by /{post.author}</h6>
                 <h4>{post.title}</h4>
                 <h5>{post.body}</h5>
+                <UpAndDownVote upVote={this.props.upVote} downVote={this.props.downVote} currentUser={this.props.appState.currentUser} post_id={post.id} votes={post.votes} />
               </div>
             )
             }).reverse()
