@@ -17,7 +17,7 @@ class Sidebar extends Component {
         for (i = 0; i < postArray.length; i++) {
             authorsArray.push(postArray[i].author)
         }
-        const authors = Array.from(new Set(authorsArray))
+        let authors = Array.from(new Set(authorsArray))
         this.setState({
             uniqueAuthors: authors
         })
