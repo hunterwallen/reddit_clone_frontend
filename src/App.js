@@ -325,7 +325,10 @@ class App extends Component {
           </div>
 
           <div id="sidebar">
-            <Sidebar appState={this.state} showSubreddit={this.showSubreddit}/>
+            <Sidebar 
+              appState={this.state} 
+              showSubreddit={this.showSubreddit} 
+            />
           </div>
 
         </div>
