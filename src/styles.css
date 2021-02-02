@@ -239,11 +239,10 @@ textarea {
     flex-direction: row;
 }
 
-/* Posts Scroll */
+/* Main Feed */
 
-#post-scroll {
-    padding: 5em 3em 3em 3em;
-    width: 50vw;
+#mainFeed {
+    display: flex;
 }
 
 /* Sidebar */
@@ -295,13 +294,9 @@ textarea {
     margin: 0;
 }
 
-a {
-    text-decoration: none;
-    color: black;
-}
-
-a:hover {
+#subreddit-name:hover {
     color: coral;
+    cursor: pointer;
 }
 
 #ad-space {

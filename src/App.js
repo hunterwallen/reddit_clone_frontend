@@ -29,6 +29,7 @@ class App extends Component {
           subreddits: this.state.subreddits,
           viewingSub: this.state.viewingSub
         })
+        console.log(response.data);
     })
   }
 
@@ -38,7 +39,7 @@ class App extends Component {
         posts: this.state.posts,
         currentUser: this.state.currentUser,
         subreddits: response.data.reverse(),
-        viewingSub: ""
+        viewingSub: this.state.viewingSub
       })
     })
   }
@@ -53,9 +54,13 @@ class App extends Component {
     info.author = this.state.currentUser.username
     info.user_id = Number(this.state.currentUser.user_id)
     info.subreddit_id = Number(this.state.viewingSub)
-    console.log(info);
+    let newPostId = ''
     axios.post('https://reddit-two-point-oh.herokuapp.com/posts', info).then((response) => {
       this.getPosts()
+      newPostId = response.data.id
+      axios.put('https://reddit-two-point-oh.herokuapp.com/subreddits/', {post_id: newPostId, subreddit_id: info.subreddit_id}).then((response) => {
+        this.getSubreddits()
+      })
     })
   }
 
@@ -78,7 +83,6 @@ class App extends Component {
   }
 
   submitLogin = (creds) => {
-    console.log(creds);
     axios.post('https://reddit-two-point-oh.herokuapp.com/accounts/login', creds).then((response) => {
       console.log(response);
       if(response.data.username) {
@@ -92,7 +96,7 @@ class App extends Component {
         document.querySelector('#createNavButton').style.display = "none"
         document.querySelector('#logged-in').style.display = "flex"
         document.querySelector('#loginDiv').style.display = "none"
-        setTimeout(()=> {document.querySelector('#login_failed').style.display = "none"}, 1002)
+        setTimeout(()=> {document.querySelector('#login_failed').style.display = "none"}, 2002)
 
       } else {
         this.setState({
@@ -112,6 +116,22 @@ class App extends Component {
     })
   }
 
+  joinSub = (subInfo) => {
+    axios.put("https://reddit-two-point-oh.herokuapp.com/followsub", subInfo).then((response) => {
+    })
+    axios.put("https://reddit-two-point-oh.herokuapp.com/addsub", subInfo).then((response) => {
+      this.getSubreddits()
+    })
+  }
+
+  leaveSub = (subInfo) => {
+    axios.put("https://reddit-two-point-oh.herokuapp.com/unfollowsub", subInfo).then((response) => {
+    })
+    axios.put("https://reddit-two-point-oh.herokuapp.com/leavesub", subInfo).then((response) => {
+      this.getSubreddits()
+    })
+  }
+
   showSubreddit = (id) => {
     let subId = id
     console.log(subId);
@@ -123,6 +143,7 @@ class App extends Component {
       })
       document.querySelector('#showSub').style.display = "flex"
       document.querySelector('#exploreSubs').style.display = "none"
+      document.querySelector('#newSubDiv').style.display = "none"
   }
 
   logout = () => {
@@ -196,9 +217,10 @@ class App extends Component {
   goHome = () => {
 
       document.querySelector('#newSubDiv').style.display = 'none'
-      document.querySelector('#postMain').style.display = 'flex'
       document.querySelector('#exploreSubs').style.display = 'none'
       document.querySelector('#showSub').style.display = "none"
+      document.querySelector('#loginDiv').style.display = "none"
+      document.querySelector('#newUserDiv').style.display = "none"
       this.setState({
         posts: this.state.posts,
         currentUser: this.state.currentUser,
@@ -214,9 +236,7 @@ class App extends Component {
 
           <div id="logo" onClick={this.goHome}>
             <img src="https://ps.w.org/wp-avatar/assets/icon-256x256.png?rev=1787902" id="reddit-icon"/>
-            <a href="/" id="h1-logo">
-              <h1>reddit 2.0</h1>
-            </a>
+            <h1>reddit 2.0</h1>
           </div>
 
           <div id="nav-commands">
@@ -253,7 +273,7 @@ class App extends Component {
         </div>
         <div id="showSub" style={{display:"none"}}>
           <ShowSub posts={this.state.posts} deletePost={this.deletePost} handleSubmit={this.handleSubmit} handleEdit={this.handleEdit} currentUser={this.state.currentUser}
-          appState={this.state} />
+          appState={this.state} joinSub={this.joinSub} leaveSub={this.leaveSub}/>
         </div>
         <div id="flex-container">
 
@@ -262,7 +282,10 @@ class App extends Component {
           </div>
 
           <div id="sidebar">
-            <Sidebar appState={this.state} showSubreddit={this.showSubreddit}/>
+            <Sidebar 
+              appState={this.state} 
+              showSubreddit={this.showSubreddit} 
+            />
           </div>
 
         </div>

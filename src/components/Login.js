@@ -35,7 +35,7 @@ class Login extends Component {
       password: ""
     })
     event.target.reset()
-    setTimeout(()=> {document.querySelector('#login_failed').style.display = "block"}, 1000)
+    setTimeout(()=> {document.querySelector('#login_failed').style.display = "block"}, 2000)
   }
 
   render = () => {
