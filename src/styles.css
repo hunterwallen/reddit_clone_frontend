@@ -263,7 +263,7 @@ textarea {
 
 #post-image-id {
     width: 400px;
-
+}
 #post-id:hover {
     filter: drop-shadow(0 0 3px darkgrey);
     border: 1px solid grey;
