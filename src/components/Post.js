@@ -33,7 +33,13 @@ class Post extends Component {
 
             <div id="post-id">
             <h6>Posted by /{post.author}</h6>
+
             <h4>{post.title}</h4>
+
+            {(post.img_url !== null ) ?
+              <img src={post.img_url} id="post-image-url" />
+              : null }
+
             <h5>{post.body}</h5>
             <UpAndDownVote post_id={post.id} upVote={this.props.upVote} downVote={this.props.downVote} currentUser={this.props.currentUser} votes={post.votes}/>
             {Number(post.user_id) === this.props.currentUser.user_id ?
