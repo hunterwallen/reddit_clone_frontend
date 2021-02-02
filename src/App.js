@@ -194,6 +194,8 @@ class App extends Component {
     document.querySelector('#createNavButton').style.display = "flex"
     document.querySelector('#logged-in').style.display = "none"
     document.querySelector('#newSubDiv').style.display = "none"
+    document.querySelector('#exploreSubs').style.display = "none"
+    document.querySelector('#showSub').style.display = "none"
     document.querySelector('#post-scroll').style.display = 'flex'
     this.setState({
       posts: this.state.posts,
@@ -239,8 +241,15 @@ class App extends Component {
     let newSubDiv = document.querySelector('#newSubDiv')
     if(newSubDiv.style.display === "none") {
       document.querySelector('#newSubDiv').style.display = "flex"
+      document.querySelector('#showSub').style.display = 'none'
+      document.querySelector('#post-scroll').style.display = 'none'
+      document.querySelector('#exploreSubs').style.display = 'none'
+
     } else {
       document.querySelector('#newSubDiv').style.display = "none"
+      document.querySelector('#showSub').style.display = 'none'
+      document.querySelector('#post-scroll').style.display = 'flex'
+      document.querySelector('#exploreSubs').style.display = 'none'
     }
   }
 
