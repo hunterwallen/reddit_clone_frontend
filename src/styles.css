@@ -118,7 +118,7 @@ h1 {
 }
 
 /* Create a user */
-/* 
+/*
 #user-login, #new-user {
     background-color:#f68d49;
     display: flex;
@@ -576,8 +576,12 @@ h2 {
   color: white;
   border: 0;
   border-radius: 20px;
-  align-self: flex-end;
+
   width: 10em;
+}
+
+.submitEditButton {
+  margin-top: 1em;
 }
 
 .submitEditButton:hover, .deletePostButton:hover, .showEditButton:hover {
@@ -587,13 +591,13 @@ h2 {
 .editPostForm {
   display: flex;
   flex-direction: column;
-  width: 72.5%;
+  align-items: center;
   margin: 1em auto;
   background-color: lightgrey;
   padding: 2em;
 }
 .editPostForm textarea, .editPostForm input[type="text"]{
-
+  max-width: 95%;
   margin: 0;
   font-family: 'Quicksand', sans-serif;
   font-size: .7em;
@@ -619,4 +623,3 @@ h2 {
 .postBody {
   margin-bottom: 4em;
 }
-
