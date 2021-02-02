@@ -57,14 +57,24 @@ class ShowSub extends Component {
             </main>
             : (this.props.currentUser.username ?
                 (subreddit.user_id === null ?
-                  null :
+                  <div className="subredditIsPrivate">
+                      <span id="warning-triangle">&#9651;</span><h3>This Subreddit 2.0 is Private. Log in and join it to view posts. </h3><span id="warning-triangle">&#9651;</span>
+                  </div>
+                 :
                    (subreddit.user_id.includes(this.props.currentUser.user_id) ?
                      <main id="postMain">
                                <Post posts={this.props.posts} deletePost={this.props.deletePost} handleSubmit={this.props.handleSubmit} handleEdit={this.props.handleEdit} currentUser={this.props.currentUser}
                                currentSubredditId={subreddit.sub_reddit_id} upVote={this.props.upVote} downVote={this.props.downVote} />
-                     </main> : null
+                     </main>
+                     :
+                     <div className="subredditIsPrivate">
+                          <span id="warning-triangle">&#9651;</span><h3>This Subreddit 2.0 is Private. Log in and join it to view posts. </h3><span id="warning-triangle">&#9651;</span>
+                      </div>
                  )
-             ) : null)
+             ) :
+             <div className="subredditIsPrivate">
+                <span id="warning-triangle">&#9651;</span><h3>This Subreddit 2.0 is Private. Log in and join it to view posts. </h3><span id="warning-triangle">&#9651;</span>
+          </div>)
           }
 
           </div>
