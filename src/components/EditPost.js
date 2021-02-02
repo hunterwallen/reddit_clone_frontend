@@ -48,13 +48,13 @@ class EditPost extends Component {
   render = () => {
     return (
       <div>
-        <button onClick={this.showEdit}>Edit Post</button>
-        <form onSubmit={this.handleEdit} style={{display: "none"}}>
+        <button onClick={this.showEdit} className="showEditButton">Edit Post</button>
+        <form onSubmit={this.handleEdit} style={{display: "none"}} className="editPostForm">
           <p>Title</p>
           <input type="text" id="title" onChange={this.handleChange}  defaultValue={this.state.title}/>
           <p>Body</p>
           <textarea id="body" onChange={this.handleChange} defaultValue={this.state.body}></textarea>
-          <input type="submit" value="Edit Post" />
+          <input type="submit" value="Edit Post" className="submitEditButton" />
         </form>
       </div>
     )

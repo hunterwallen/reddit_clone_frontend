@@ -9,11 +9,12 @@ class CreateSub extends Component {
     public: false
   }
 
+
   checkQualified = (event) => {
     if(this.state.name === "" || this.state.description === "") {
-      document.querySelector('#createSubButton').style.display = "none"
+      document.querySelector('#createSubButton').style = "display: flex; opacity: 0.5; pointer-events: none;"
     } else {
-      document.querySelector('#createSubButton').style.display = "block"
+      document.querySelector('#createSubButton').style = "display: flex; opacity: 1.0; pointer-events: auto;"
     }
   }
 
@@ -45,7 +46,7 @@ class CreateSub extends Component {
       <div id="new-sub">
         <h5 id="create-a-sub">Create a new Subreddit 2.0</h5>
         <br/>
-        <form onSubmit={this.createSub}>
+        <form onSubmit={this.createSub} className="createSubForm">
 
           <p>Subreddit 2.0 Name</p>
           <input type="text" id="name" onChange={this.handleChange} placeholder="Name..." />
@@ -60,10 +61,8 @@ class CreateSub extends Component {
             <option value={true}>Public</option>
           </select>
 
-
-          <input type="submit" id="createSubButton" value="Create Subreddit 2.0"
-          style={{display:"none"}}
-          />
+          <br/>
+          <input type="submit" id="createSubButton" value="Create Subreddit 2.0" />
         </form>
       </div>
     )

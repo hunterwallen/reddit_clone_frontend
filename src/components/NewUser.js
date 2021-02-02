@@ -61,8 +61,10 @@ class NewUser extends Component {
   render = () => {
     return (
       <div id="new-user">
-        <h5 id="create-a-post">Create a new user account</h5>
+        <div id="newUserTitleAndForm">
+        <h5 id="create-a-post-header"><span id="white-triangle">&#9651;</span> Create Account</h5>
         <br/>
+
         <form onSubmit={this.createUser} className='createUserForm'>
 
           <input type="text" id="email" onChange={this.handleChange} placeholder="Email" />
@@ -79,6 +81,7 @@ class NewUser extends Component {
           style={{opacity: "0.5"}}
           />
         </form>
+        </div>
       </div>
     )
   }

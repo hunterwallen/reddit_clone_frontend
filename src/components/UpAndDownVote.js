@@ -14,50 +14,66 @@ class UpAndDownVote extends Component {
 
   render = () => {
     return (
-      <div>
+      <div className="upAndDownVoteContainer">
 
         {this.props.currentUser.username ?
           (this.props.currentUser.post_reaction_id === null ?
-            <div>
+            <div className="votesHolderDiv">
               <div className="upVoteDiv">
-                <img src="https://i.imgur.com/FGPc6SG.png" onClick={this.upVote} />
+                <img src="https://i.imgur.com/4orOVpv.png" onClick={this.downVote} className="upAndDownVoteImage" />
               </div>
               <div className="voteCount">
-                <h3>{this.props.votes} Votes</h3>
+                <h3 className="votesCounterNumber">{this.props.votes}</h3>
               </div>
               <div className="upVoteDiv">
-                <img src="https://i.imgur.com/4orOVpv.png" onClick={this.downVote} />
+                <img src="https://i.imgur.com/FGPc6SG.png" onClick={this.upVote} className="upAndDownVoteImage" />
               </div>
             </div>
 
 
           :
           (this.props.currentUser.post_reaction_id.includes(this.props.post_id) ?
-                  <div className="voteCount">
-                    <h3>{this.props.votes} Votes</h3>
-                  </div>
+          <div className="votesHolderDiv">
+            <div className="upVoteDiv">
+              <img src="https://i.imgur.com/4orOVpv.png" className="upAndDownVoteImage noVoting" />
+            </div>
+            <div className="voteCount">
+              <h3 className="votesCounterNumber">{this.props.votes}</h3>
+            </div>
+            <div className="upVoteDiv">
+              <img src="https://i.imgur.com/FGPc6SG.png" className="upAndDownVoteImage noVoting" />
+            </div>
+          </div>
 
                 :
-                  <div>
-                    <div className="upVoteDiv">
-                      <img src="https://i.imgur.com/FGPc6SG.png" onClick={this.upVote} />
-                    </div>
-                    <div className="voteCount">
-                      <h3>{this.props.votes} Votes</h3>
-                    </div>
-                    <div className="upVoteDiv">
-                      <img src="https://i.imgur.com/4orOVpv.png" onClick={this.downVote} />
-                    </div>
+                <div className="votesHolderDiv">
+                  <div className="upVoteDiv">
+                    <img src="https://i.imgur.com/4orOVpv.png" onClick={this.downVote} className="upAndDownVoteImage" />
                   </div>
+                  <div className="voteCount">
+                    <h3 className="votesCounterNumber">{this.props.votes}</h3>
+                  </div>
+                  <div className="upVoteDiv">
+                    <img src="https://i.imgur.com/FGPc6SG.png" onClick={this.upVote} className="upAndDownVoteImage" />
+                  </div>
+                </div>
 
                   )
               )
 
         :
 
-            <div className="voteCount">
-              <h3>{this.props.votes} Votes</h3>
-            </div>
+        <div className="votesHolderDiv">
+          <div className="upVoteDiv">
+            <img src="https://i.imgur.com/4orOVpv.png" className="upAndDownVoteImage noVoting" />
+          </div>
+          <div className="voteCount">
+            <h3 className="votesCounterNumber">{this.props.votes}</h3>
+          </div>
+          <div className="upVoteDiv">
+            <img src="https://i.imgur.com/FGPc6SG.png" className="upAndDownVoteImage noVoting" />
+          </div>
+        </div>
           }
 
       </div>
