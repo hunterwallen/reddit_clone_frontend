@@ -4,6 +4,7 @@ class NewPost extends Component {
 
   state = {
     title: "",
+    img_url: "",
     body: ""
   }
 
@@ -18,6 +19,7 @@ class NewPost extends Component {
     this.props.handleSubmit(this.state)
     this.setState({
       title: "",
+      img_url: "",
       body: ""
     })
     event.target.reset()
@@ -31,7 +33,9 @@ class NewPost extends Component {
         <form onSubmit={this.handleSubmit}>
           <input type="text" id="title" placeholder="Title" onChange={this.handleChange} />
           <br/>
-          <textarea id="body" placeholder="Text" onChange={this.handleChange}></textarea>
+          <input type="text" id="img_url" placeholder="Image URL (optional)" onChange={this.handleChange} />
+          <br/>
+          <textarea id="body" placeholder="Text (optional)" onChange={this.handleChange}></textarea>
           <br/>
           <input type="submit" id="create-post-button" value="Post" />
         </form>

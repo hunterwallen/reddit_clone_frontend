@@ -25,6 +25,9 @@ class MainFeed extends Component {
                   <div id="post-id" style={{order: "1"}}>
                     <h6>Posted by /{post.author}</h6>
                     <h4>{post.title}</h4>
+                    {(post.img_url !== null ) ?
+                      <img src={post.img_url} id="post-image-url" />
+                      : null }
                     <h5>{post.body}</h5>
                     <UpAndDownVote upVote={this.props.upVote} downVote={this.props.downVote} currentUser={this.props.appState.currentUser} post_id={post.id} votes={post.votes} />
                   </div>
@@ -32,7 +35,11 @@ class MainFeed extends Component {
                   <div id="post-id" style={{order: "3"}}>
                     <h6>Posted by /{post.author}</h6>
                     <h4>{post.title}</h4>
-                    <h5>{post.body}</h5>
+                    <h4>{post.title}</h4>
+                      {(post.img_url !== null ) ?
+                        <img src={post.img_url} id="post-image-url" />
+                        : null }
+                      <h5>{post.body}</h5>
                     <UpAndDownVote upVote={this.props.upVote} downVote={this.props.downVote} currentUser={this.props.appState.currentUser} post_id={post.id} votes={post.votes} />
                   </div> : null
                       )
