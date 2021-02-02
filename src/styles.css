@@ -105,7 +105,7 @@ h1 {
 
 #login_failed {
     font-family: 'Varela Round';
-    font-size: .7em; 
+    font-size: .7em;
 }
 
 .form {
@@ -339,4 +339,9 @@ a:hover {
 
 .subreddit-list {
 
+}
+
+#mainFeed {
+  display: flex;
+  flex-direction: column;
 }
