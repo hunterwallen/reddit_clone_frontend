@@ -219,7 +219,6 @@ input[type=text], input[type=password] {
 
 #title, #img_url {
     width: 361px;
-
 }
 
 textarea {
@@ -260,10 +259,10 @@ textarea {
     border-radius:4px;
 }
 
-
 #post-image-id {
-    width: 400px;
+    width: 50vw;
 }
+
 #post-id:hover {
     filter: drop-shadow(0 0 3px darkgrey);
     border: 1px solid grey;
