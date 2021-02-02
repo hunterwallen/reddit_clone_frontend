@@ -41,23 +41,25 @@ class Login extends Component {
   render = () => {
     return (
       <div id="user-login">
-        <h5 id="create-a-post">Login</h5>
-        <br/>
-        <div class="form">
-          <form onSubmit={this.submitLogin}>
-            <input type="text" id="email" onChange={this.handleChange} placeholder="Email"/>
-            <input type="password" id="password" onChange={this.handleChange} placeholder="Password"/>
+        <div id="loginTitleAndForm">
+          <h5 id="create-a-post">Login</h5>
+          <br/>
+          <div class="form">
+            <form onSubmit={this.submitLogin} className="loginForm">
+              <input type="text" id="email" onChange={this.handleChange} placeholder="Email"/>
+              <input type="password" id="password" onChange={this.handleChange} placeholder="Password"/>
 
-            <p id="login_failed" style={{display: "none"}}>Your username or password is invalid. Please try again.</p>
+              <p id="login_failed" style={{display: "none"}}>Your username or password is invalid. Please try again.</p>
 
-            <input type="submit" value="Login" 
-            // style={{opacity: 0.7}} 
-            id="loginButton"/>
-          </form>
+              <input type="submit" value="Login"
+              // style={{opacity: 0.7}}
+              id="loginButton"/>
+            </form>
+          </div>
         </div>
 
         <div id="switch_to_create_user">
-          <button class='toggle_sign_in_create' id="need-to-create-acct" onClick={this.props.toggleAuthDivs}>Need to create an account?</button>
+          <button className='toggle_sign_in_create' id="need-to-create-acct" onClick={this.props.toggleAuthDivs}>Need to create an account?</button>
         </div>
       </div>
     )

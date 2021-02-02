@@ -65,6 +65,13 @@ class Sidebar extends Component {
                     )})}
 
             </div>
+
+
+
+            <div class="sidebar" id="ad-space">
+                <img src="https://external-preview.redd.it/rwpCB5xxSfklIDhmbs9vO6UL16JwwXs6LPwupL6m2h4.jpg?auto=webp&s=a5c1f4dc8f1b1f39a7a16b263783c995e4f2d1b4" id="ad" alt="ad" />
+            </div>
+
             </div>
 
 

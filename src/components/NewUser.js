@@ -12,13 +12,14 @@ class NewUser extends Component {
 
   checkQualified = (event) => {
     if(this.state.username === "" || this.state.email === "" || this.state.password === "") {
-      document.querySelector('#createButton').style.display = "none"
+      document.querySelector('#createButton').style = "display: flex; opacity: 0.5; pointer-events: none;"
     } else if (this.state.password !== event.target.value){
-      document.querySelector('#createButton').style.display = "none"
+      document.querySelector('#createButton').style = "display: flex; opacity: 0.5; pointer-events: none;"
     } else {
-      document.querySelector('#createButton').style.display = "block"
+      document.querySelector('#createButton').style = "display: flex; opacity: 1.0; pointer-events: auto;"
     }
   }
+
 
   checkMatch = (event) => {
     if (this.state.password !== event.target.value){
@@ -62,20 +63,20 @@ class NewUser extends Component {
       <div id="new-user">
         <h5 id="create-a-post">Create a new user account</h5>
         <br/>
-        <form onSubmit={this.createUser}>
-          
+        <form onSubmit={this.createUser} className='createUserForm'>
+
           <input type="text" id="email" onChange={this.handleChange} placeholder="Email" />
-         
+
           <input type="text" id="username" onChange={this.handleChange} placeholder="Username" />
-          
+
           <input type="password" id="password" onChange={this.handleChange} placeholder="Password" />
-          
+
           <input type="password" id="verified_password" onChange={this.handleChange} placeholder="Verify Password" />
           <p id="matchingWarning" style={{display:"none"}}> Your passwords do not match</p>
 
-          
-          <input type="submit" id="createButton" value="Create Account" 
-          style={{opacity: 0.5}} 
+
+          <input type="submit" id="createButton" value="Create Account"
+          style={{opacity: "0.5"}}
           />
         </form>
       </div>

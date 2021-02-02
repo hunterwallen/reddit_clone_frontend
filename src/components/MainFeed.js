@@ -8,7 +8,7 @@ class MainFeed extends Component {
       <div id='mainFeed'>
         <h2>Recent Posts</h2>
         {!this.props.currentUser.username  ?
-          this.props.appState.posts.slice(this.props.appState.posts.length - 21, this.props.appState.posts.length - 1).map((post) => {
+          this.props.appState.posts.reverse().slice(0, 20).map((post) => {
           return (
             <div id="post-id">
               <h6>Posted by /{post.author}</h6>
@@ -17,9 +17,9 @@ class MainFeed extends Component {
               <UpAndDownVote upVote={this.props.upVote} downVote={this.props.downVote} currentUser={this.props.appState.currentUser} post_id={post.id} votes={post.votes} />
             </div>
           )
-          }).reverse()
+          })
         : (this.props.currentUser.sub_reddit_id !== null ?
-            this.props.appState.posts.slice(this.props.appState.posts.length - 21, this.props.appState.posts.length - 1).map((post) =>{
+            this.props.appState.posts.reverse().slice(0, 20).map((post) =>{
               return(
                 (this.props.currentUser.sub_reddit_id.includes(post.subreddit_id) ?
                   <div id="post-id" style={{order: "1"}}>
@@ -38,9 +38,9 @@ class MainFeed extends Component {
                       )
                     )
                   )
-                }).reverse()
+                })
 
-            : this.props.appState.posts.slice(this.props.appState.posts.length - 21, this.props.appState.posts.length - 1).map((post) => {
+            : this.props.appState.posts.reverse().slice(0, 20).map((post) => {
             return (
               <div id="post-id">
                 <h6>Posted by /{post.author}</h6>
@@ -49,7 +49,7 @@ class MainFeed extends Component {
                 <UpAndDownVote upVote={this.props.upVote} downVote={this.props.downVote} currentUser={this.props.appState.currentUser} post_id={post.id} votes={post.votes} />
               </div>
             )
-            }).reverse()
+            })
             )}
 
 
