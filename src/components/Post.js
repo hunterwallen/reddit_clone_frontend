@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import NewPost from './NewPost.js'
 import EditPost from './EditPost.js'
+import UpAndDownVote from './UpAndDownVote'
 
 
 class Post extends Component {
@@ -34,6 +35,7 @@ class Post extends Component {
             <h6>Posted by /{post.author}</h6>
             <h4>{post.title}</h4>
             <h5>{post.body}</h5>
+            <UpAndDownVote post_id={post.id} upVote={this.props.upVote} downVote={this.props.downVote} currentUser={this.props.currentUser} votes={post.votes}/>
             {Number(post.user_id) === this.props.currentUser.user_id ?
               <div id="myPostsOptions">
                 <button id={post.id} onClick={this.deletePost}>Delete Post</button>

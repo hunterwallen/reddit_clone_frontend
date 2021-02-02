@@ -6,6 +6,7 @@ import CreateSub from './components/CreateSub'
 import ExploreSubs from './components/ExploreSubs'
 import ShowSub from './components/ShowSub'
 import Sidebar from './components/Sidebar'
+import MainFeed from './components/MainFeed'
 import axios from 'axios'
 
 class App extends Component {
@@ -29,7 +30,6 @@ class App extends Component {
           subreddits: this.state.subreddits,
           viewingSub: this.state.viewingSub
         })
-        console.log(response.data);
     })
   }
 
@@ -39,7 +39,7 @@ class App extends Component {
         posts: this.state.posts,
         currentUser: this.state.currentUser,
         subreddits: response.data.reverse(),
-        viewingSub: this.state.viewingSub
+        viewingSub: ""
       })
     })
   }
@@ -54,13 +54,9 @@ class App extends Component {
     info.author = this.state.currentUser.username
     info.user_id = Number(this.state.currentUser.user_id)
     info.subreddit_id = Number(this.state.viewingSub)
-    let newPostId = ''
+    console.log(info);
     axios.post('https://reddit-two-point-oh.herokuapp.com/posts', info).then((response) => {
       this.getPosts()
-      newPostId = response.data.id
-      axios.put('https://reddit-two-point-oh.herokuapp.com/subreddits/', {post_id: newPostId, subreddit_id: info.subreddit_id}).then((response) => {
-        this.getSubreddits()
-      })
     })
   }
 
@@ -83,6 +79,7 @@ class App extends Component {
   }
 
   submitLogin = (creds) => {
+    console.log(creds);
     axios.post('https://reddit-two-point-oh.herokuapp.com/accounts/login', creds).then((response) => {
       console.log(response);
       if(response.data.username) {
@@ -96,7 +93,7 @@ class App extends Component {
         document.querySelector('#createNavButton').style.display = "none"
         document.querySelector('#logged-in').style.display = "flex"
         document.querySelector('#loginDiv').style.display = "none"
-        setTimeout(()=> {document.querySelector('#login_failed').style.display = "none"}, 2002)
+        setTimeout(()=> {document.querySelector('#login_failed').style.display = "none"}, 1002)
 
       } else {
         this.setState({
@@ -116,6 +113,7 @@ class App extends Component {
     })
   }
 
+
   joinSub = (subInfo) => {
     axios.put("https://reddit-two-point-oh.herokuapp.com/followsub", subInfo).then((response) => {
     })
@@ -132,6 +130,51 @@ class App extends Component {
     })
   }
 
+
+  upvote = (post_id) => {
+    let postId = {
+      post_id: post_id
+    }
+    axios.put("https://reddit-two-point-oh.herokuapp.com/upvote", postId).then((response) => {
+    })
+    let info = {
+      user_id: this.state.currentUser.user_id,
+      post_id: post_id
+    }
+    axios.put("https://reddit-two-point-oh.herokuapp.com/react", info).then((response) => {
+      this.getPosts()
+      this.setState({
+        posts: this.state.posts,
+        currentUser: response.data,
+        subreddits: this.state.subreddits,
+        viewingSub: this.state.viewingSub
+      })
+    })
+  }
+
+  downvote = (post_id) => {
+    let postId = {
+      post_id: post_id
+    }
+    axios.put("https://reddit-two-point-oh.herokuapp.com/downvote", postId).then((response) => {
+    })
+    let info = {
+      user_id: this.state.currentUser.user_id,
+      post_id: post_id
+    }
+    axios.put("https://reddit-two-point-oh.herokuapp.com/react", info).then((response) => {
+      this.getPosts()
+      this.setState({
+        posts: this.state.posts,
+        currentUser: response.data,
+        subreddits: this.state.subreddits,
+        viewingSub: this.state.viewingSub
+      })
+    })
+  }
+
+
+
   showSubreddit = (id) => {
     let subId = id
     console.log(subId);
@@ -143,7 +186,6 @@ class App extends Component {
       })
       document.querySelector('#showSub').style.display = "flex"
       document.querySelector('#exploreSubs').style.display = "none"
-      document.querySelector('#newSubDiv').style.display = "none"
   }
 
   logout = () => {
@@ -205,11 +247,10 @@ class App extends Component {
     if(exploreSubs.style.display === "none") {
         document.querySelector('#newSubDiv').style.display = 'none'
         document.querySelector('#showSub').style.display = 'none'
-        document.querySelector('#loginDiv').style.display = "none"
-        document.querySelector('#newUserDiv').style.display = "none"
         document.querySelector('#exploreSubs').style.display = 'flex'
 
       } else {
+        document.querySelector('#postMain').style.display = 'flex'
         document.querySelector('#exploreSubs').style.display = 'none'
       }
   }
@@ -217,10 +258,9 @@ class App extends Component {
   goHome = () => {
 
       document.querySelector('#newSubDiv').style.display = 'none'
+      document.querySelector('#postMain').style.display = 'flex'
       document.querySelector('#exploreSubs').style.display = 'none'
       document.querySelector('#showSub').style.display = "none"
-      document.querySelector('#loginDiv').style.display = "none"
-      document.querySelector('#newUserDiv').style.display = "none"
       this.setState({
         posts: this.state.posts,
         currentUser: this.state.currentUser,
@@ -236,7 +276,9 @@ class App extends Component {
 
           <div id="logo" onClick={this.goHome}>
             <img src="https://ps.w.org/wp-avatar/assets/icon-256x256.png?rev=1787902" id="reddit-icon"/>
-            <h1>reddit 2.0</h1>
+            <a href="/" id="h1-logo">
+              <h1>reddit 2.0</h1>
+            </a>
           </div>
 
           <div id="nav-commands">
@@ -272,13 +314,14 @@ class App extends Component {
           <ExploreSubs appState={this.state} showSubreddit={this.showSubreddit}/>
         </div>
         <div id="showSub" style={{display:"none"}}>
-          <ShowSub posts={this.state.posts} deletePost={this.deletePost} handleSubmit={this.handleSubmit} handleEdit={this.handleEdit} currentUser={this.state.currentUser}
-          appState={this.state} joinSub={this.joinSub} leaveSub={this.leaveSub}/>
+          <ShowSub posts={this.state.posts} deletePost={this.deletePost} handleSubmit={this.handleSubmit} handleEdit={this.handleEdit} currentUser={this.state.currentUser} 
+          appState={this.state} joinSub={this.joinSub} leaveSub={this.leaveSub} upVote={this.upvote} downVote={this.downvote} />
+
         </div>
         <div id="flex-container">
 
           <div id="post-scroll">
-            Please log in to see posts.
+            <MainFeed appState={this.state} currentUser={this.state.currentUser} upVote={this.upvote} downVote={this.downvote} />
           </div>
 
           <div id="sidebar">

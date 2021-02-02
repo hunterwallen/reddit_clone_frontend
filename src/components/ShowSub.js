@@ -53,7 +53,7 @@ class ShowSub extends Component {
             {subreddit.public === "t" ?
             <main id="postMain">
                       <Post posts={this.props.posts} deletePost={this.props.deletePost} handleSubmit={this.props.handleSubmit} handleEdit={this.props.handleEdit} currentUser={this.props.currentUser}
-                      currentSubredditId={subreddit.sub_reddit_id}/>
+                      currentSubredditId={subreddit.sub_reddit_id} upVote={this.props.upVote} downVote={this.props.downVote} />
             </main>
             : (this.props.currentUser.username ?
                 (subreddit.user_id === null ?
@@ -61,7 +61,7 @@ class ShowSub extends Component {
                    (subreddit.user_id.includes(this.props.currentUser.user_id) ?
                      <main id="postMain">
                                <Post posts={this.props.posts} deletePost={this.props.deletePost} handleSubmit={this.props.handleSubmit} handleEdit={this.props.handleEdit} currentUser={this.props.currentUser}
-                               currentSubredditId={subreddit.sub_reddit_id}/>
+                               currentSubredditId={subreddit.sub_reddit_id} upVote={this.props.upVote} downVote={this.props.downVote} />
                      </main> : null
                  )
              ) : null)
