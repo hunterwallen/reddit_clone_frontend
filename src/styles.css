@@ -242,12 +242,19 @@ textarea {
 #flex-container {
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 /* Main Feed */
 
 #mainFeed {
     display: flex;
+    margin: 2em 0 3em 2em;
+    padding: 1em;
+    width: 50vw;
+
+    z-index: 1;
 }
 
 /* Sidebar */
@@ -329,7 +336,6 @@ textarea {
     padding: 1em;
     width: 50vw;
     background-color: whitesmoke;
-    position: absolute;
     z-index: 1;
 }
 
