@@ -186,6 +186,7 @@ class App extends Component {
       })
       document.querySelector('#showSub').style.display = "flex"
       document.querySelector('#exploreSubs').style.display = "none"
+      document.querySelector('#post-scroll').style.display = 'none'
   }
 
   logout = () => {
@@ -303,17 +304,21 @@ class App extends Component {
             </div>
 
         </div>
-        <div id="loginDiv" style={{display:"none"}}>
-          <Login submitLogin={this.submitLogin} currentUser={this.state.currentUser} toggleAuthDivs={this.toggleAuthDivs} />
-        </div>
-        <div id="newUserDiv" style={{display:"none"}}>
-          <NewUser createUser={this.createUser} toggleAuthDivs={this.toggleAuthDivs} />
-        </div>
-         <div id="newSubDiv" style={{display:"none"}}>
-          <CreateSub createSub={this.createSub} />
-        </div>
 
         <div id="flex-container">
+          <div id="loginDiv" style={{display:"none"}}>
+            <Login submitLogin={this.submitLogin} currentUser={this.state.currentUser} toggleAuthDivs={this.toggleAuthDivs} />
+          </div>
+          <div id="newUserDiv" style={{display:"none"}}>
+            <NewUser createUser={this.createUser} toggleAuthDivs={this.toggleAuthDivs} />
+          </div>
+           <div id="newSubDiv" style={{display:"none"}}>
+            <CreateSub createSub={this.createSub} />
+          </div>
+
+
+
+
           <div id="exploreSubs" style={{display:"none"}}>
             <ExploreSubs appState={this.state} showSubreddit={this.showSubreddit}/>
           </div>
