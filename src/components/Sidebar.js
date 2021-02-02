@@ -7,16 +7,16 @@ class Sidebar extends Component {
     }
 
     componentDidMount = () => {
-        this.getAuthors()
+        setTimeout(()=>{this.getAuthors()}, 500)
     }
 
     getAuthors = () => {
         let authorsArray = []
-        let postArray = this.props.appState.posts
-        let i;
-        for (i = 0; i < postArray.length; i++) {
-            authorsArray.push(postArray[i].author)
-        }
+        console.log(this.props.appState);
+        this.props.appState.posts.map((post) => {
+          authorsArray.push(post.author)
+        })
+        console.log(authorsArray);
         const authors = Array.from(new Set(authorsArray))
         this.setState({
             uniqueAuthors: authors
