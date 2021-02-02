@@ -500,3 +500,57 @@ h2 {
   border: 2px solid #eee;
   padding: .7em;
 }
+
+
+.submitEditButton, .deletePostButton, .showEditButton {
+  font-family: 'Varela Round';
+  font-size: .8em;
+  margin: .25em 0;
+  padding: .5em 1em;
+  background-color: #C51700;
+  color: white;
+  border: 0;
+  border-radius: 20px;
+  align-self: flex-end;
+  width: 10em;
+}
+
+.submitEditButton:hover, .deletePostButton:hover, .showEditButton:hover {
+  filter: drop-shadow(0 0 2px grey);
+}
+
+.editPostForm {
+  display: flex;
+  flex-direction: column;
+  width: 72.5%;
+  margin: 1em auto;
+  background-color: lightgrey;
+  padding: 2em;
+}
+.editPostForm textarea, .editPostForm input[type="text"]{
+
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  font-size: .7em;
+  border: 2px solid #eee;
+  padding: .7em;
+}
+.editPostForm textarea{
+  height: 10em;
+
+}
+
+#myPostsOptions {
+  margin-top: -4.5em;
+}
+
+.upAndDownVoteContainer {
+  align-self: flex-end;
+  width: 30%;
+  margin-bottom: -.5em;
+}
+
+
+.postBody {
+  margin-bottom: 4em;
+}

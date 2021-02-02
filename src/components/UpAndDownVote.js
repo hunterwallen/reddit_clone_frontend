@@ -14,7 +14,7 @@ class UpAndDownVote extends Component {
 
   render = () => {
     return (
-      <div>
+      <div className="upAndDownVoteContainer">
 
         {this.props.currentUser.username ?
           (this.props.currentUser.post_reaction_id === null ?
