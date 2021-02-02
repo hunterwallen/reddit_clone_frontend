@@ -39,7 +39,7 @@ class App extends Component {
         posts: this.state.posts,
         currentUser: this.state.currentUser,
         subreddits: response.data.reverse(),
-        viewingSub: ""
+        viewingSub: this.state.viewingSub
       })
     })
   }
@@ -193,6 +193,7 @@ class App extends Component {
     document.querySelector('#createNavButton').style.display = "flex"
     document.querySelector('#logged-in').style.display = "none"
     document.querySelector('#newSubDiv').style.display = "none"
+    document.querySelector('#post-scroll').style.display = 'flex'
     this.setState({
       posts: this.state.posts,
       currentUser: {},
@@ -263,6 +264,7 @@ class App extends Component {
       document.querySelector('#newUserDiv').style.display = "none"
       document.querySelector('#exploreSubs').style.display = 'none'
       document.querySelector('#showSub').style.display = "none"
+      document.querySelector('#post-scroll').style.display = 'flex'
       this.setState({
         posts: this.state.posts,
         currentUser: this.state.currentUser,
